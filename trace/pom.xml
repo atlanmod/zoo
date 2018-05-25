@@ -9,7 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>trace</artifactId>
-
-
+    <artifactId>zoo-trace</artifactId>
+    <name>EMF Trace Model</name>
 </project>

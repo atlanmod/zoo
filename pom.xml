@@ -39,6 +39,7 @@
         <module>graph</module>
         <module>org.eclipse.gmt.modisco</module>
         <module>java.neoemf</module>
+        <module>trace</module>
     </modules>
 
     <dependencyManagement>

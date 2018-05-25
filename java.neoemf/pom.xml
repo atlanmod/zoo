@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>java.neoemf</artifactId>
+    <name>NeoEMF Java Model</name>
 
 
     <dependencies>
