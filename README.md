@@ -1,2 +1,3 @@
-# zoo
-Atlanmod Zoo
+# Atlanmod Zoo
+
+Meta-project containing MDE resources.
