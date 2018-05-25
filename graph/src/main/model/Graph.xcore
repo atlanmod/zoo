@@ -1,5 +1,5 @@
 @Ecore(nsURI="http://atlanmod.consistency.example")
-@GenModel(modelDirectory="/graph-model/target/generated-sources",
+@GenModel(modelDirectory="/graph-model/src/main/java-gen",
 importerID="org.eclipse.emf.importer.ecore")
 
 package org.atlanmod.graph
