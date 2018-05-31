@@ -40,6 +40,7 @@
         <module>org.eclipse.gmt.modisco</module>
         <module>java.neoemf</module>
         <module>trace</module>
+        <module>types</module>
     </modules>
 
     <dependencyManagement>
