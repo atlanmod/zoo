@@ -74,11 +74,12 @@
     </properties>
 
     <modules>
-        <module>graph</module>
-        <module>org.eclipse.gmt.modisco</module>
-        <module>java.neoemf</module>
-        <module>trace</module>
-        <module>types</module>
+        <module>emf-graph</module>
+        <module>emf-java</module>
+        <module>neoemf-java</module>
+        <module>emf-trace</module>
+        <module>emf-types</module>
+        <module>emf-widespread</module>
     </modules>
 
     <dependencyManagement>

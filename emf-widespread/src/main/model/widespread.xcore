@@ -1,0 +1,38 @@
+package widespread
+
+
+class Primitive {
+	
+	boolean aBoolean
+	byte aByte
+	char aChar
+	double aDouble
+	float aFloat
+	int anInt
+	long aLong
+	short aShort
+	
+}
+
+class InitializedPrimitive {
+	
+	boolean anInitializedBoolean = "false"
+	byte anInitializedByte = "8"
+	char anInitializedChar = "a"
+	double anInitializedDouble = "42.35"
+	float anInitializedFloat
+	int anInitializedInt = "33"
+	long anInitializedLong = "123456789"
+	short anInitializedShort = "23678"
+	
+}
+
+class Numeric {
+	BigDecimal aBigDecimal
+	BigInteger aBigInteger
+}
+
+class Mamouth {
+	contains Primitive[] primitives 
+	
+}
