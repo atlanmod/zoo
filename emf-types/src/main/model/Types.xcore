@@ -1,0 +1,24 @@
+@Ecore(nsURI="http://www.eclipse.org/uml2/5.0.0/Types")
+@UML(originalName="primitiveTypes")
+@GenModel(modelDirectory="/zoo-types/src/main/java-gen",
+    modelName="Uml",
+    importerID="org.eclipse.emf.importer.ecore")
+
+package types
+
+annotation "http://www.eclipse.org/uml2/2.0.0/UML" as UML
+
+@GenModel(documentation="Boolean is used for logical expressions, consisting of the predefined values true and false.")
+type Boolean wraps boolean
+
+@GenModel(documentation="Integer is a primitive type representing integer values.")
+type Integer wraps int
+
+@GenModel(documentation="Real is a primitive type representing the mathematical concept of real.")
+type Real wraps double
+
+@GenModel(documentation="UnlimitedNatural is a primitive type representing unlimited natural values.")
+type UnlimitedNatural wraps int
+
+@GenModel(documentation="String is a sequence of characters in some suitable character set used to display information about the model. Character sets may include non-Roman alphabets and characters.")
+type String wraps String
