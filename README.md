@@ -5,9 +5,9 @@ Atlanmod Zoo is a set of Eclipse Modeling Framework (EMF) Ecore models,
 which can be easily integrated to projects that require these models.
 
 Some examples of available models are:
-- [Simple graph](./graph/]: A simple syntax for representing oriented
+- [Simple graph](./emf-graph/]: A simple syntax for representing oriented
 graphs (mostly used for testing purposes.
-- [Java](./org.eclipse.gmt.modisco/): Java syntax model, used by the
+- [Java](./emf-java/): Java syntax model, used by the
 [Modisco](https://www.eclipse.org/MoDisco/) tool)
 
 This repository only contains models expressed in [Xcore](https://wiki.eclipse.org/Xcore).
