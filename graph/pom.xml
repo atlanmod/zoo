@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>zoo</artifactId>
-        <groupId>org.atlanmod</groupId>
+        <groupId>org.atlanmod.zoo</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>zoo-graph</artifactId>
+    <artifactId>emf-graph</artifactId>
     <packaging>jar</packaging>
     <name>EMF Graph Model</name>
 </project>
