@@ -1,0 +1,263 @@
+@xcore.lang.Ecore(nsURI="http://www.example.org/iotmodel")
+@xcore.lang.Ecore(invocationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+	settingDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+	validationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot")
+@xcore.lang.GenModel(modelDirectory="/iotmodel/src", importerID="org.eclipse.emf.importer.ecore")
+package iotmodel
+
+annotation "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" as Pivot
+
+class Gateway extends Thing {
+}
+
+abstract class EdgeDevice extends Thing {
+	boolean[1] router
+}
+
+abstract class AppChannel {
+	refers AppPort[] bindTo opposite isBound
+}
+
+class Network {
+	String name
+	String domain
+	refers AccessControlPolicy[] enforce opposite isEnforced
+	contains Thing[] thing
+	contains Data[] data
+}
+
+class RequestResponse extends AppChannel {
+	refers WebServer server opposite requestresponse
+}
+
+class PublishSubscribe extends AppChannel {
+	refers MessageBroker publishSubscribe opposite usedBy
+}
+
+abstract class Thing {
+	refers IoTOs iotos opposite thing
+	String name
+	contains ID[] ^id
+	contains Behavior[] behavior
+	contains Message[] message
+	contains AppPort[] containsPorts
+	refers Data produce
+}
+
+abstract class AccessControlPolicy {
+	contains Rule[] rule
+	refers Network[] isEnforced opposite enforce
+	id String policyName
+}
+
+@xcore.lang.Ecore(constraints="CheckNameSize")
+@Pivot(CheckNameSize="self.name.size()>=5")
+class ProtocolStack {
+	PhysicalLinkLayer PHYDATA
+	NetworkLayer NWK
+	TransportLayer Transport
+	ApplicationLayer ApplicationProtocol
+	id String name
+}
+
+class Rule {
+	contains Thing[] thing
+	contains Permission[] permission
+	contains ConstraintExpression[] constraintexpression
+	String name
+}
+
+class IoTOs {
+	refers ProtocolStack[] implements
+	OsList name
+	refers Thing[] thing opposite iotos
+	contains ProgrammingModel[] programmingmodel
+}
+
+class IoTPlatform {
+	refers ProtocolStack useProtocol
+	refers Message sentReceivedByPlatform opposite sendReceiveMessage
+	refers AppChannel communicateThrough
+	refers UserApplication[] userapplication opposite iotplatform
+	refers MessageBroker messagebroker opposite iotplatform
+	refers WebServer webserver opposite iotplatform
+}
+
+abstract class Message {
+	refers IoTPlatform sendReceiveMessage opposite sentReceivedByPlatform
+	refers Data encapsualte opposite isEncapsulated
+}
+
+class MessageFormat extends Message {
+}
+
+class MessageBroker {
+	refers PublishSubscribe[] usedBy opposite publishSubscribe
+	contains Topic[] topic
+	refers IoTPlatform iotplatform opposite messagebroker
+}
+
+class Topic {
+}
+
+abstract class UserApplication {
+	refers IoTPlatform[] iotplatform opposite userapplication
+}
+
+class DesktopApp extends UserApplication {
+}
+
+class MobileApp extends UserApplication {
+}
+
+class WebServer {
+	refers RequestResponse requestresponse opposite server
+	refers IoTPlatform iotplatform opposite webserver
+}
+
+class DefaultPolicy extends AccessControlPolicy {
+}
+
+class PrivatePolicy extends AccessControlPolicy {
+}
+
+abstract class Permission {
+	refers Action permitOrDeny opposite permission
+}
+
+class ConstraintExpression {
+}
+
+class AllowPermission extends Permission {
+}
+
+class DenyPermission extends Permission {
+}
+
+class Sensor extends EdgeDevice {
+}
+
+class Actuator extends EdgeDevice {
+}
+
+class IoTMetamodel {
+	contains IoTPlatform[] iotplatform
+	contains Network[] network
+	contains AccessControlPolicy[] accesscontrolpolicy
+	contains IoTOs[] iotos
+	contains ProtocolStack[] protocolstack
+	contains AppChannel[] channel
+}
+
+enum OsList {
+	Contiki
+	TinyOS = 1
+	Riot = 2
+	RaspberryPi = 3
+	FreeRTOS = 4
+	LiteOS = 5
+	Mantis = 6
+	Arduino = 7
+}
+
+enum PhysicalLinkLayer {
+	IEEE_805_15_4
+	Ethernet = 1
+	WirelessLAN = 2
+	SMS_Physical = 3
+	Bluetooth = 4
+}
+
+enum TransportLayer {
+	TCP
+	UDP = 1
+	Zigbee = 2
+	DTLS = 3
+	SMS = 4
+}
+
+enum NetworkLayer {
+	IPv6
+	IPv4 = 1
+	Zigbee = 2
+	IPsec = 3
+	LowPANToIPv6 = 4
+	SMS_Network = 5
+}
+
+enum ApplicationLayer {
+	MQTT
+	HTTP = 1
+	AMQP = 2
+	CoAP = 3
+	Websocket = 4
+	Zigbee = 5
+}
+
+enum IdList {
+	EPC
+	Ucode = 2
+	ID_at_URI = 2
+	IMEI = 3
+	OID = 4
+	URI = 5
+	DOI = 6
+	ISBN = 7
+	IPAdress = 8
+}
+
+class ID {
+	id String ID
+	String newAttribute
+}
+
+class Behavior {
+	contains Action[] makeAction
+	contains Event[] event
+}
+
+class Action {
+	refers Permission permission opposite permitOrDeny
+	refers Event hasEvent opposite triggerAction
+}
+
+class Event {
+	refers Action triggerAction opposite hasEvent
+}
+
+class ProgrammingModel {
+	LanguageList language
+}
+
+enum LanguageList {
+	C_Posix
+	nesC = 1
+	CPlusPlus = 2
+	Java = 3
+	Javascript = 4
+	Go = 5
+	Python = 6
+	Assembler = 7
+	Nodejs = 8
+	C_Arduino = 9
+}
+
+class SharedAction extends Action {
+}
+
+class AppPort {
+	refers AppChannel[] isBound opposite bindTo
+}
+
+class Data {
+	refers Message isEncapsulated opposite encapsualte
+}
+
+class Actor {
+	refers Thing uses
+	String name
+	String intent
+}
+
+class MaliciousActor extends Actor {
+}
