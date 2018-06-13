@@ -80,6 +80,7 @@
         <module>emf-trace</module>
         <module>emf-types</module>
         <module>emf-widespread</module>
+        <module>smm</module>
     </modules>
 
     <dependencyManagement>
