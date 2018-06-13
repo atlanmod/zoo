@@ -137,6 +137,7 @@ abstract class Measure extends AbstractMeasureElement
 {
 	op Argument[0..*] getArguments() {
 		/* This operation returns the set of arguments that the different operations of the measure have defined and got returned by getParamStrings() */
+		
 	}
 	op Argument[0..*] getAllArguments() {
 		/* This operation returns the set of arguments for this measure and any child measure required for the execution of the measure. 
@@ -156,11 +157,12 @@ abstract class Measure extends AbstractMeasureElement
 	refers MeasureRelationship[0..*] outbound
 	refers EquivalentMeasureRelationship[0..*] equivalentTo
 	refers EquivalentMeasureRelationship[0..*] equivalentFrom
-	refers Operation[?] defaultQuery
-	contains MeasureRelationship[0..*] measureRelationships
+	refers Operation[?] defaultQuery	
 	refers MeasureCategory[0..*] category opposite categoryMeasure
 	refers Scope[1] scope
 	refers Characteristic[1] trait
+	
+	contains MeasureRelationship[0..*] measureRelationships
 }
 
 class MeasureCategory extends AbstractMeasureElement {
@@ -208,6 +210,8 @@ abstract class Measurement extends SmmElement
 	refers RefinementMeasurementRelationship[0..*] refinementFrom
 	
 	refers ObservedMeasure[1] observedMeasure opposite measurements
+	
+	refers EObject measurand
 }
 
 abstract class MeasurementRelationship extends SmmRelationship {}
@@ -262,6 +266,7 @@ class Operation extends AbstractMeasureElement
 		/**
 		 * This operation returns the set of string that defines the parameter in use by an operation
 		 */
+		 return body
 	}
 	
 	String[1] body
