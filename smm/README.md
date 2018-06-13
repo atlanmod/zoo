@@ -55,8 +55,18 @@ Represent the relationship between Measure categories, and other Measure element
 **TimeStamp Primitive Type**
 This primitive represents a point in time, such as the combination of a date and a time within a day.
 ## Extensions
+SMM provides a simple extension mechanisms that provide a uniform meta-model pattern for extending SMM. It allows ad-hoc users attributes and annotations definitions to instances of SMM Elements. 
+
+**Attribute**
+Attributes allow informations to be attached to any model element (i.e. `SmmElement`) in a form of a tagged value. The `tag` attribute represents the name of the attribute, whereas the `value` attribute represents its value. Since `tag` inherit `SmmElement`, it can also have a description. 
+
+**Annotation**
+Annotations allow textual description to be attached to any instance of a model element. 
 
 ## Measures
+Measures are the evaluation processes to assign comparable numeric, or symbolic, values to entities, in order to characterize selected qualities or traits of those entities. Since many different measures are possible, they have to be characterized with differing dimensions, resolutions, accuracy, and so on. Furthermore, traits or characteristics may be generalized or specialized. Each measure has a *scope*: the set of entities to which it is applicable;  a range, the set of possible measurement results; and the measurable property (or trait) that the measure characterizes. 
+
+For instance, the scope of a line counting measure would be a software application,  and line length as one of its measurable trait. Explicitly representing the scope and the measurable traits allows for the consideration of different measures. Each measurable trait may have multiple distinct measures.
 
 ## Measurements 
 
