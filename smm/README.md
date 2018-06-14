@@ -68,6 +68,104 @@ Measures are the evaluation processes to assign comparable numeric, or symbolic,
 
 For instance, the scope of a line counting measure would be a software application,  and line length as one of its measurable trait. Explicitly representing the scope and the measurable traits allows for the consideration of different measures. Each measurable trait may have multiple distinct measures.
 
+**AbstractMeasureElement**: Abstract parent class for all the measure entities.
+
+**Characteristic**: This class represents a property ( or trait) of the members in its scope, which may be characterized by applying a measure to those members. Specifying a characteristic indicates what aspect, trait, or property, the measure purports to measure.
+Through the `parent` association, Characteristic provides a representation of a hierarchy of measures, based upon the abstraction of a measured trait. E.g.: A Length characteristic could be the parent of a *fileLength* characteristic, and a *programLength* characteristic. Finally *programLength* could be the parent of a *programLinesOfCodeLength* characteristic. 
+
+**Scope**: Represents a set of Elements as domains for measures. The domain is a subset instances of a class specified by Scope's `class` attribute. The set of objects may be further restricted by a (optional) recognizer `Operation`. Note that SMM requires all the objects to be instances of a single class. 
+The recognizer, if given, is a boolean operation applicable to instances of the named class. The measure's scope is restricted to those instances for which the recognizer returns true. 
+Example: Area of a square where we don't have a class named square. 
+```
+BinaryMeasure: 
+	Functor: Times
+	Base Measure1: Side1 Length
+	Base Measure2: Side2 Length
+Scope: 
+	Name: Square
+	Description: Two dimensional closed object with 4 equal length sides.
+```
+For the measure above, the characteristic trait is likely to be "area" which could be a child characteristic of the more general "size". 
+
+**Measure**: Abstract class modeling the specification of measures, either by name, by representing a derivation of base measures, or by representing method operations directly applied to the measured object. It has to meaningfully identify the measure applied, in order to produce a given measurement. 
+
+Example: McCabe Cyclomatic complexity could be specified by its name: "McCabe's Cyclomatic Complexity", by a direct measurement operation, or by rescaling counts of either independent paths or choice points. 
+
+A measure may alternatively be identified by citing a library of measure which includes the measure by name. A measure may be a refinement of another measure. The scope of the first measure is a subset of the second measure's scope. 
+
+Attributes `measureLabelFormat` and `measurementLabelFormat` have to be specified using the labelFormat. Just like format strings, labelFormat is defined as a text portion with possible replacement expressed as argument index: `"This {1} of {0}"`. The arguments are defined in a comma separated list. Each of those arguments must follow a specific pattern. There's a standard syntax and also a shorthand version for some common cases. 
+
+The standard syntax starts by specifying a context object, followed by ":", and then an operation whose name must be the name of a valid instance in the Operation class:
+Example: `"Template Text": Context Object: OperationName, ContextObject.attribute, ...`
+ContextObject represents the object that we are interested in collecting information from. It is related, or associated with the measurement, such as the Scope or the measure, or the measurand. 
+OperationName defines the name of a **valid** instance of the Operation class, that is designed to return a string.
+
+DefaultQuery relationship is designed to provide a way to specify a default value in the specific case where a non-direct measure (a measure that depends on an other measure for its value)  happens not to have any available value from what should have been its "base measure".
+
+**UnitOfMeasure**: Provides a representation for units of measure. Standard units are expected here, for a better re-usability. 
+
+**Operation**: Defines an operation to execute.  The language attribute specifies the language of the operation, such as "OCL", "XQuery", or "English", whereas the body attribute specifies the measurement operation expressed in the selected language.
+
+Note that the operation body supports the use of replaceable parameters. This is accomplished by defining placeholders for incoming arguments, that will be replaced at runtime with a specific value. The `getArguments` and `getAllArguments` of the Measure class are designed to help in this regard. 
+They must adhere to the following specification:  `'{'[typeName]parameterName['="'defaultValue'"']'}'` where typeName represents the type of the parameter, that has to be supported by the "type" attribute of the Argument class. parameterName represents the name of the parameter, and defaultValue represents a default value to offer (on getArguments()) or to use as Argument. This value is optional. 
+
+**OCLOperation**:  This class allows for the definition and registration of OCL helper methods in the context of specific classifiers. 
+
+**MeasureRelationship**: Abstract class representing any relationship between two measures.
+
+**EquivalentMeasureRelationship**: A specific MeasureRelationship representing equivalency between two measures.
+
+**RefinementMeasureRelationship**: Represents a relationship of refinement between two measures. 
+
+**DimensionalMeasure**: This class models the specification of measures which assign numeric values that can be placed in order by magnitude. Dimensional measures have units of measures, and their values span a dimension. 
+
+**GradeMeasure**: Represents a simple range-based grading or classifications based upon already defined dimensional measures.  A GradeMeasure consits of mapping intervals to symbols, where the intervals are parts of the underlying measure's dimension. E.g., 100 to 90 maps to "A", 80 up to 90 maps to "B", etc ... The underlying dimension consists of grade points. 
+Furthermore, GradeMeasure may represent a purely qualitative evaluation with no quantitative base measure. 
+
+**GradeMeasureRelationship**: Class representing a relationship between a Grade measure and a dimensional measure. 
+
+**Interval**: Represents an interval, the range of values from a minimum to a maximum. Endpoints can be included or excluded. 
+
+**GradeInterval**: Represents the mapping of an interval to a symbol that serves as a grade. 
+
+**RankingMeasure**: Represents (as does GradeMeasure) simple range-based ranking or classifications based upon already defined dimensional measures. It differs from GradeMeasure in that RankingMeasures are DimensionalMeasures. 
+
+**RankingMeasureRelationship**: Represents a relationship of ranking between measure and a base dimensional measure. 
+
+**RankingInterval**: Mapping of an interval to a number that serves as a rank.
+
+**Influence Data Type**: Enumeration defining an influence - a property of a relationship. helps understanding quickly how measures influence each other. 
+
+**ScaleOfMeasurement Data Type**: Enumeration classifying the measures into four levels: nominal, ordinal, interval or ratio. May be used to develop taxonomy of measures.
+
+**CollectiveMeasure**: Represent measures, which when applied to a given entity, accumulates measurements of entities similarly related to the given entity. 
+
+**Accumulator Data Type**:  Defines DirectMeasure, which apply a given Operation to a measured entity.
+
+**BinaryFunctor Data Type**: Defines the binary functor applied to two base measurements, to compute a binary measurement.
+
+**DirectMeasure**: Measure applying a given operation to the measured entity.
+
+**CountingMeasure**: Subclass of DirectMeasure where the given operation returns 0 or 1, based upon recognizing the measured entity. 
+
+**BinaryMeasure**: Measure, which applied to a given entity accumulates measurements of two entities related to the given entity. The measurands of the base measurements need to be different as the measurand of the collective measurement.
+
+**RatioMeasure**: Represents measures that are ratios of two base measures. 
+
+**BaseMeasureRelationship**: Represents a relationship of hierarchy between a derived measure and its base measures.  
+
+**BaseNMeasureRelationship**: Relationship of hierarchy between a CollectiveMeasure and a DimensionalMeasure. 
+
+**Base1MeasureRelationship**:  Relationship of hierarchy between a BinaryMeasure and a DimensionalMeasure.
+
+**Base2MeasureRelationship**: Relationship of hierarchy between a BinaryMeasure and a DimensionalMeasure.
+
+**NamedMeasure**: Specifies measure that are well known, and can be specified only by their names, such as "McCabe Cyclomatic Complexity". 
+
+**RescaledMeasure**: Measure that specifies a process that re-scales a measurement on an entity with one unit of measure, to obtain a second measurement of the same entity but with a different unit of measure. 
+
+**RescaledMeasureRelationship**: Class representing a relationship of measure rescaling between a rescaled measure and a dimensional measure. 
+
 ## Measurements 
 
 ## Observations 
