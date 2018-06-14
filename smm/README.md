@@ -217,7 +217,15 @@ Measurement results are values from ordered sets. Such set can be nominal (eg. P
 
 ## Observations 
 
-*Coming soon*
+Measurements are sometimes repeated, to distinguish these multiple measurements, the observation and scope class can represent contextual information, such as the time of the measurement and the identification of the measurement tool, and the artifacts that are under measurement. 
+
+**Observation**: This class represents some of the contextual information which may be unique to this measurement such as date, measurer, and the tools used. 
+
+**ObservationScope**: This class represents the model(s) or sub model that are the subject of the related observation. This information can be used initially to understand which model to gather measurements from, later by anyone wishing to recreate a new observation of the same artifacts.
+
+**ObservedMeasure**: This class represents an association between observations and the measures that make up such observation. This class also serves to hold the list of measurements characterized by the related measure that are part of a given observation. 
+
+**Argument**: Represents some of the variable arguments that are being passed to the measures that have Operations that make use of replaceable parameters. 
 
 ## Example 
 
