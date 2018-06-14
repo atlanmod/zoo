@@ -168,9 +168,59 @@ Furthermore, GradeMeasure may represent a purely qualitative evaluation with no 
 
 ## Measurements 
 
+Measurement results are values from ordered sets. Such set can be nominal (eg. Poor, Fair, Good, Excellent) as long as there's an underlying order. A set may instead define a dimension where its values may be stated in orders of magnitude with respect to archetypal member. SMM allows for dimensional measurement, the magnitude is the measure's unit of measure. 
+
+**MeasurementClass**: Represents the results of applying the associate measure to the associated measurand. Two measurements of the same measure, on the same measurand, can be distinguished by the associated Observation.
+
+**MeasurementRelationship**: Represents any relationship between two measurements. 
+
+**EquivalentMeasurementRelationship**: Represents any relationship of equivalence between two measurements.
+
+**RefinementMeasurementRelationship**: Represents a relationship of refinement between two measurements. 
+
+**DimensionalMesurement**: Class representing the results of applying a dimensional measure to an entity. The result is in terms of the measure's unit. 
+
+**GradeMeasurement**: Represents the grade found by gradeMeasure. The base measurements share its measurand with this derived grading. 
+
+**GradeMeasurementRelationship**: Represents a relationship between a grade measurement and a dimensional measurement. 
+
+**RankingMeasurement**: Represents the grade found by RankingMeasure. Its ranking scheme mapped the ranking's underlying base measurement to the ranking's value.
+
+**RankingMeasurementRelationship**: Represents a relationship between a ranking measurement and a dimensional measurement.
+
+**CollectiveMeasurement**: This class represents the results of applying its collectiveMeasure to an entity:
+
+ 1. Apply the base measure to each contained element to obtain a set of base measurements.
+ 2. Apply the n-ary accumulator to the set of base measurements to obtain the measurement of the container.
+
+**DirectMeasurement**: Represents the measurement results found by applying the measure's specified operation directly to the measurand.
+
+**CountingMeasurement**: Particular subclass of DirectMeasurement which is very useful in counting. Its associated measure is CountingMeasure. 
+
+**BinaryMeasurement**: Measurement associated with BinaryMeasure. 
+
+**RatioMeasurement**: Measurement associated with RatioMeasure
+
+**BaseMeasurementRelationship**: Relationship between a derivedMeasurement and a base dimensional measurement. 
+
+**BaseNMeasurementRelationship**: Relationship between a collective of measurement and a base dimensional measurement.
+
+**Base1MeasurementRelationship**: Relationship of hierarchy between a binary measurement and a dimensional measurement.
+
+**Base2MeasurementRelationship**: Relationship of hierarchy between a binary measurement and a dimensional measurement.
+
+**NamedMeasurement**: Represents the measurement results of applying to the Measurand measurement processes that are generally known and identifiable by name. 
+
+**RescaledMeasurement**: Measurement results of applying the operation specified by a measure to rescale the measurement. The measure is a RescaledMeasure. 
+
+**RescaledMeasurementRelationship**: Relationship of measurement rescaling between a rescaledMeasurement and a dimensionalMeasurement. 
+
 ## Observations 
+
+*Coming soon*
 
 ## Example 
 
+*Coming soon.*
 
 This XCore file and the README have been created using the version 1.2 Beta specification available at https://www.omg.org/spec/SMM/About-SMM/
