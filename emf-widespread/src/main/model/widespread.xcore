@@ -1,8 +1,10 @@
-package widespread
+@Ecore(nsURI="http://atlanmod.consistency.example")
+@GenModel(modelDirectory="/emf-widespread/src/main/java-gen",
+importerID="org.eclipse.emf.importer.ecore")
 
+package org.atlanmod.widespread
 
 class Primitive {
-	
 	boolean aBoolean
 	byte aByte
 	char aChar
@@ -11,7 +13,7 @@ class Primitive {
 	int anInt
 	long aLong
 	short aShort
-	
+	String aString
 }
 
 class InitializedPrimitive {
@@ -20,11 +22,18 @@ class InitializedPrimitive {
 	byte anInitializedByte = "8"
 	char anInitializedChar = "a"
 	double anInitializedDouble = "42.35"
-	float anInitializedFloat
+	float anInitializedFloat = "9.343"
 	int anInitializedInt = "33"
 	long anInitializedLong = "123456789"
 	short anInitializedShort = "23678"
-	
+	String anInitializedString = "Hello World"
+}
+
+class DifferentIntProperties {
+	volatile int aVolatileInt
+	transient int aTrasientInt
+	derived int aDerivedInt
+	readonly int aReadonlyInt
 }
 
 class Numeric {

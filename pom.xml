@@ -81,6 +81,7 @@
         <module>emf-types</module>
         <module>emf-widespread</module>
         <module>emf-cobol</module>
+        <module>smm</module>
     </modules>
 
     <dependencyManagement>
