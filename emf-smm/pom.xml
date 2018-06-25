@@ -9,6 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>iot-global</artifactId>
-    <name>Global IoT model</name>
+    <artifactId>emf-smm</artifactId>
+    <name>EMF Structured Metrics Meta-Model</name>
 </project>

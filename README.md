@@ -28,6 +28,7 @@ Some examples of standard EMF available models are:
 graphs (mostly used for testing purposes.
 - [Java](./emf-java/): Java language syntax model, used by the [Modisco](https://www.eclipse.org/MoDisco/) tool)
 - [Cobol](./emf-cobol/): COBOL language syntax model.
+- [SMM](./emf-smm); Structured Metrics Meta-model.
 
 ### NeoEMF resources
 

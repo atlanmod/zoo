@@ -76,12 +76,13 @@
     <modules>
         <module>emf-graph</module>
         <module>emf-java</module>
-        <module>neoemf-java</module>
         <module>emf-trace</module>
         <module>emf-types</module>
         <module>emf-widespread</module>
         <module>emf-cobol</module>
-        <module>smm</module>
+        <module>emf-iotmodel</module>
+        <module>emf-smm</module>
+        <module>neoemf-java</module>
     </modules>
 
     <dependencyManagement>
