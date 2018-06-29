@@ -229,6 +229,12 @@ Measurements are sometimes repeated, to distinguish these multiple measurements,
 
 ## Example 
 
-*Coming soon.*
+#### 1- Customer Satisfaction Measure
+
+![alt text](/emf-smm/examples/smm_example1.png?raw=true)
+
+DeliveryTime is measured in Days. CustomerSatisfaction is measured based on grading of DeliveryTime. Consequently, GradeInterval endpoints are also expressed in Days. 
+
+*More example coming soon.*
 
 This XCore file and the README have been created using the version 1.2 Beta specification available at https://www.omg.org/spec/SMM/About-SMM/
