@@ -235,6 +235,16 @@ Measurements are sometimes repeated, to distinguish these multiple measurements,
 
 DeliveryTime is measured in Days. CustomerSatisfaction is measured based on grading of DeliveryTime. Consequently, GradeInterval endpoints are also expressed in Days. 
 
+#### 2- Conversion of LOC To Maintainability
+
+According to *Measuring Maintainability Index of a Software Depending on Line of Code Only*, maintainability can be computed out of several metrics, including the number of lines of code (LOC). 
+In order to have a maintainability unit out of the line of code, the following rescaling is applied to LOC:
+`m_loc = 21 - ln(aveLOC)`
+
+This rescaling is shown using the following SMM model:
+
+![alt text](/emf-smm/examples/smm_example2.png?raw=true)
+
 *More example coming soon.*
 
 This XCore file and the README have been created using the version 1.2 Beta specification available at https://www.omg.org/spec/SMM/About-SMM/
