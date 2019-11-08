@@ -38,7 +38,7 @@ Ecore models for using together with the http://www.neoemf.com[NeoEMF] model per
 
 == Usage
 
-Models from the atlanmod Zoo are available as independent Maven plugins.
+Models from the atlanmod Zoo are available as independent Maven artifacts.
 For instance, the dependency for Modisco Java's abstract syntax is:
 
 [source,xml]
@@ -46,7 +46,7 @@ For instance, the dependency for Modisco Java's abstract syntax is:
 <dependency>
     <artifactId>emf-java</artifactId>
     <groupId>org.atlanmod.zoo</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 ----
 
