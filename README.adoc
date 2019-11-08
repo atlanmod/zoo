@@ -36,7 +36,7 @@ Ecore models for using together with the http://www.neoemf.com[NeoEMF] model per
 
 * link:./neoemf-java/[Java]: Java language syntax model.
 
-== Usage
+== Maven Usage
 
 Models from the atlanmod Zoo are available as independent Maven artifacts.
 For instance, the dependency for Modisco Java's abstract syntax is:
@@ -49,6 +49,14 @@ For instance, the dependency for Modisco Java's abstract syntax is:
     <version>1.0.0</version>
 </dependency>
 ----
+
+== Eclipse Update Site
+
+Ecore models are also available as Eclipse Plugins.
+Use these update site to install the suitable plugin:
+
+* https://www.atlanmod.org/zoo/releases/snapshot/plugin[Snapshots]
+* https://www.atlanmod.org/zoo/releases/latest/plugin/[Releases]
 
 == Repository organization
 
