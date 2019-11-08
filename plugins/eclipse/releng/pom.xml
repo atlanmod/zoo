@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.atlanmod.zoo.eclipse</groupId>
+        <artifactId>org.atlanmod.zoo.eclipse</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>org.atlanmod.zoo.eclipse.releng</artifactId>
+
+    <packaging>pom</packaging>
+
+    <name>Atlanmod Zoo Eclipse Releng</name>
+    <description />
+
+    <modules>
+        <module>update</module>
+    </modules>
+
+</project>
+

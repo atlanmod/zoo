@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated COBOL -->
+      <package
+            uri="http://zoo.atlanmod.org/emf-cobol"
+            class="org.eclipse.gmt.modisco.cobol.CobolPackage"
+            genModel="src/main/model/COBOL.xcore"/>
+   </extension>
+
+</plugin>

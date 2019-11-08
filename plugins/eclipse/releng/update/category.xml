@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+
+    <!-- Features -->
+
+    <feature id="org.atlanmod.zoo.emf.java.feature" version="1.0.0.qualifier">
+        <category name="emf" />
+    </feature>
+
+    <feature id="org.atlanmod.zoo.emf.smm.feature" version="1.0.0.qualifier">
+        <category name="emf" />
+    </feature>
+
+    <!-- Categories -->
+
+    <category-def name="emf" label="EMF">
+        <description>
+            EMF models
+        </description>
+    </category-def>
+
+</site>

@@ -1,0 +1,402 @@
+@Ecore(nsURI="fr.inria.atlanmod.ocl2query.gremlin")
+@GenModel(modelDirectory="/fr.inria.atlanmod.mogwai.gremlin/src", importerID="org.eclipse.emf.importer.ecore", complianceLevel="7.0")
+package fr.inria.atlanmod.mogwai.gremlin
+
+import org.eclipse.emf.ecore.EObject
+
+class GremlinScript {
+	contains Instruction[] instructions
+	String name
+	@GenModel(body="StringBuffer sb = new StringBuffer();\nfor(Instruction i : getInstructions()) {\n\tsb.append(i.toString()+\";\\n\");\n}\nreturn sb.toString();")
+	op String toString()
+}
+
+abstract class Instruction {
+}
+
+class ReturnStatement extends Instruction {
+	String value
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"return \");\nres.append(value);\nreturn res.toString();")
+	op String toString()
+}
+
+class MethodDeclaration extends Instruction {
+	String[1] name
+	unique String[] parameters
+	contains Instruction[] instructions
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"def \");\nres.append(getName());\nres.append(\"(\");\nint gen = 0;\nfor(String s : getParameters()) {\n\tres.append(s);\n\tgen++;\n\tif(gen < getParameters().size()) {\n\t\tres.append(\", \");\n\t}\n}\nres.append(\") {\");\nfor(Instruction i : getInstructions()) {\n\tres.append(i.toString()).append(\";\");\n}\nres.append(\"}\");\nreturn res.toString();")
+	op String toString()
+}
+
+abstract class TypeDeclaration extends Instruction {
+}
+
+class ListDeclaration extends TypeDeclaration {
+	@GenModel(body="return \" List\";")
+	op String toString()
+}
+
+class SetDeclaration extends TypeDeclaration {
+	@GenModel(body="return \" Set\";")
+	op String toString()
+}
+
+class SortedSetDeclaration extends TypeDeclaration {
+	@GenModel(body="return \" SortedSet\";")
+	op String toString()
+}
+
+class VariableDeclaration extends Instruction {
+	String[1] name
+	contains Instruction value
+	contains TypeDeclaration ^type
+	boolean final
+	@GenModel(body="if(getType() != null) {\n\tif(getValue() != null) {\n\t\treturn getType().toString() + \" \" + getName() + \" = \" + getValue().toString();\n\t}\n\telse {\n\t\treturn getType().toString() + \" \" + getName();\n\t}\n}\nelse {\n\tif(getValue() != null) {\n\t\tif(isFinal()) {\n\t\t\treturn \"final def \" + getName() + \" = \" + getValue().toString();\n\t\t}\n\t\treturn \"def \" + getName() + \" = \" + getValue().toString();\n\t}\n\telse {\n\t\treturn \"def \" + getName();\n\t}\n}")
+	op String toString()
+}
+
+abstract class TraversalElement extends Instruction {
+	contains TraversalElement nextElement opposite previousElement
+	container TraversalElement previousElement opposite nextElement
+}
+
+@GenModel(image="false")
+class CollectionDefinition extends TraversalElement {
+	contains Instruction[] values
+	contains TypeDeclaration ^type
+	@GenModel(body="StringBuffer res = new StringBuffer();\nif(getType() != null) {\n\tres.append(\"(\");\n}\n// if(getValues().size() == 1 && getValues().get(0) instanceof fr.inria.atlanmod.mogwai.gremlin.VariableAccess) {\n//\tres.append(((fr.inria.atlanmod.mogwai.gremlin.VariableAccess)getValues().get(0)).getName());\n// } else {\nres.append(\"[\");\nint gen = 0;\nfor(Instruction i : getValues()) {\n\tres.append(i.toString());\n\tgen++;\n\tif(gen < getValues().size()) {\n\t\tres.append(\",\");\n\t}\n}\nres.append(\"]\");\nif(getType() != null) {\n\tres.append(\" as \");\n\tres.append(getType().toString());\n\tres.append(\")\");\n}\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class Closure extends Instruction {
+	contains Instruction[] instructions
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"{\");\nfor(Instruction i : getInstructions()) {\n\tres.append(i.toString()).append(\";\");\n}\nres.append(\"}\");\nreturn res.toString();")
+	op String toString()
+}
+
+class ClosureIt extends VariableAccess {
+	@GenModel(body="return super.toString();")
+	op String toString()
+	@GenModel(body="return \"it\";")
+	op String getName()
+}
+
+class VariableAccess extends TraversalElement {
+	String[1] name
+	contains TypeDeclaration cast
+	@GenModel(body="StringBuffer res = new StringBuffer();\nif(getCast() != null) {\n\tres.append(\"(\");\n}\nres.append(getName());\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nif(getCast() != null) {\n\tres.append(\" as \");\n\tres.append(getCast().toString());\n\tres.append(\")\");\n}\nreturn res.toString();")
+	op String toString()
+}
+
+abstract class Step extends TraversalElement {
+}
+
+class IdentityStep extends Step {
+	boolean needed = "true"
+	@GenModel(body="StringBuffer res = new StringBuffer();\nif(needed || getNextElement() == null) {\n\tres.append(\"_()\");\n\tif(getNextElement() != null) {\n\t\tres.append(\".\").append(getNextElement().toString());\n\t}\n}\nelse {\n\tres.append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class FillStep extends Step {
+	contains Instruction[1] instruction
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"fill(\").append(getInstruction().toString()).append(\")\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class StartStep extends Step {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"g\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class VerticesStep extends Step {
+	String vertexId
+	@GenModel(body="StringBuffer res = new StringBuffer();\nif(getVertexId() == null) {\n\tres.append(\"V\");\n}\nelse {\n\tres.append(\"v(\").append(getVertexId()).append(\")\");\n}\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class EdgesStep extends Step {
+	String relationshipName
+}
+
+class PropertyStep extends Step {
+	String[1] name
+	contains Instruction value
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"property(\'\");\nres.append(getName());\nif(getValue() != null) {\n\tres.append(\",\");\n\tres.append(getValue().toString());\n}\nres.append(\"\')\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class OutEStep extends Step {
+	String relationshipName
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"outE\");\nif(getRelationshipName() != null) {\n\tres.append(\"(\\\"\").append(getRelationshipName()).append(\"\\\")\");\n}\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class InEStep extends Step {
+	String relationshipName
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"inE\");\nif(getRelationshipName() != null) {\n\tres.append(\"(\\\"\"+getRelationshipName()+\"\\\")\");\n}\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class InVStep extends Step {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"inV\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class OutVStep extends Step {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"outV\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class FilterStep extends Step {
+	contains Closure[1] closure
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"filter\");\nres.append(getClosure().toString());\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class RetainStep extends Step {
+	contains CollectionDefinition[1] collection
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"retain(\");\nres.append(getCollection().toString());\nres.append(\")\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class ExceptStep extends Step {
+	contains CollectionDefinition[1] collection
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"except(\");\nres.append(getCollection().toString());\nres.append(\")\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class TransformStep extends Step {
+	contains Closure[1] closure
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"transform\");\nres.append(getClosure().toString());\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class GatherStep extends Step {
+	contains Closure closure
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"gather\");\nif(getClosure() != null) {\n\tres.append(getClosure().toString());\n}\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class ScatterStep extends Step {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"scatter\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+abstract class MethodCall extends TraversalElement {
+}
+
+class CustomMethodCall extends MethodCall {
+	String name
+	contains EObject[] params
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(name);\nres.append(\"(\");\nif(!getParams().isEmpty()) {\n\tString delim = \"\";\n\tfor(EObject p : params) {\n\t\tres.append(delim).append(p.toString());\n\t\tdelim = \",\";\n\t}\n}\nres.append(\")\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class NextCall extends MethodCall {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"next()\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class HasNextCall extends MethodCall {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"hasNext()\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class IndexCall extends MethodCall {
+	String[1] indexName
+	String[1] indexProperty
+	String[1] indexQuery
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"getIndex(\\\"\"+getIndexName()+\"\\\",Vertex.class)[[\"+getIndexProperty()+\":\\\"\"+getIndexQuery()+\"\\\"]]\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class CountCall extends MethodCall {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"count()\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class FirstCall extends MethodCall {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"first()\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class ToListCall extends MethodCall {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"toList()\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class IsEmptyCall extends MethodCall {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"isEmpty()\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class ContainsCall extends MethodCall {
+	contains Instruction[1] value
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"contains(\");\nres.append(getValue().toString()+\")\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class ContainsAllCall extends MethodCall {
+	contains Instruction[1] value
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"containsAll(\");\nres.append(getValue().toString()+\")\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class AddAllCall extends MethodCall {
+	contains Instruction[1] value
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"addAll(\");\nres.append(getValue().toString()+\")\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class RetainAllCall extends MethodCall {
+	contains Instruction[1] value
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"retainAll(\");\nres.append(getValue().toString()+\")\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class UnionCall extends MethodCall {
+	contains Instruction[1] leftCollection
+	contains Instruction[1] rightCollection
+	contains TypeDeclaration cast
+	@GenModel(body="StringBuffer res = new StringBuffer();\nif(getCast() != null) {\n\tres.append(\"(\");\n}\nres.append(\"computeUnion(\");\nres.append(getLeftCollection().toString());\nres.append(\", \");\nres.append(getRightCollection().toString());\nres.append(\")\");\nif(getCast() != null) {\n\tres.append(\" as \" + getCast().toString());\n\tres.append(\")\");\n}\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class IntersectionCall extends MethodCall {
+	contains Instruction[1] leftCollection
+	contains Instruction[1] rightCollection
+	contains TypeDeclaration cast
+	@GenModel(body="StringBuffer res = new StringBuffer();\nif(getCast() != null) {\n\tres.append(\"(\");\n}\nres.append(\"computeIntersection(\");\nres.append(getLeftCollection().toString());\nres.append(\", \");\nres.append(getRightCollection().toString());\nres.append(\")\");\nif(getCast() != null) {\n\tres.append(\" as \" + getCast().toString());\n\tres.append(\")\");\n}\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class SizeCall extends MethodCall {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"size()\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class Expression extends Instruction {
+}
+
+class UnaryExpression extends Expression {
+	contains Instruction[1] exp
+}
+
+class NotExpression extends UnaryExpression {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\" !( \").append(getExp().toString()).append(\")\");\nreturn res.toString();")
+	op String toString()
+}
+
+class BinaryExpression extends Expression {
+	contains Instruction[1] left
+	contains Instruction[1] right
+}
+
+class EqualityExpression extends BinaryExpression {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(getLeft().toString()).append(\" == \").append(getRight().toString());\nreturn res.toString();")
+	op String toString()
+}
+
+class InExpression extends BinaryExpression {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(getLeft().toString()).append(\" in \").append(getRight().toString());\nreturn res.toString();")
+	op String toString()
+}
+
+class DifferenceExpression extends BinaryExpression {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(getLeft().toString()).append(\" != \").append(getRight().toString());\nreturn res.toString();")
+	op String toString()
+}
+
+class OrExpression extends BinaryExpression {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(getLeft().toString()).append(\" || \").append(getRight().toString());\nreturn res.toString();")
+	op String toString()
+}
+
+class AndExpression extends BinaryExpression {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(getLeft().toString()).append(\" && \").append(getRight().toString());\nreturn res.toString();")
+	op String toString()
+}
+
+class GreaterExpression extends BinaryExpression {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(getLeft().toString()).append(\" > \").append(getRight().toString());\nreturn res.toString();")
+	op String toString()
+}
+
+class GreaterOrEqualExpression extends BinaryExpression {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(getLeft().toString()).append(\" >= \").append(getRight().toString());\nreturn res.toString();")
+	op String toString()
+}
+
+class LessExpression extends BinaryExpression {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(getLeft().toString()).append(\" < \").append(getRight().toString());\nreturn res.toString();")
+	op String toString()
+}
+
+class LessOrEqualExpression extends BinaryExpression {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(getLeft().toString()).append(\" <= \").append(getRight().toString());\nreturn res.toString();")
+	op String toString()
+}
+
+class AffectationExpression extends BinaryExpression {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(getLeft().toString()).append(\" = \").append(getRight().toString());\nreturn res.toString();")
+	op String toString()
+}
+
+class LeftShiftExpression extends BinaryExpression {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(getLeft().toString()).append(\" << \").append(getRight().toString());\nreturn res.toString();")
+	op String toString()
+}
+
+class TernaryOperator extends Expression {
+	contains Instruction condition
+	contains Instruction[1] ifTrue
+	contains Instruction[1] ifFalse
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"(\");\nres.append(getCondition().toString())\n.append(\" ? \").append(getIfTrue().toString()).append(\" : \").\nappend(getIfFalse().toString()).append(\")\");\nreturn res.toString();")
+	op String toString()
+}
+
+class StringLiteral extends Expression {
+	String[1] value
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"\\\"\").append(getValue()).append(\"\\\"\");\nreturn res.toString();")
+	op String toString()
+}
+
+class IntegerLiteral extends Expression {
+	int[1] value
+	@GenModel(body="return Integer.toString(getValue());")
+	op String toString()
+}
+
+class DoubleLiteral extends Expression {
+	double[1] value
+	@GenModel(body="return Double.toString(getValue());")
+	op String toString()
+}
+
+class BooleanLiteral extends Expression {
+	boolean[1] value
+	@GenModel(body="return Boolean.toString(isValue());")
+	op String toString()
+}
+
+class NullLiteral extends Expression {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"null\");\nreturn res.toString();")
+	op String toString()
+}
+
+class ToIntegerCall extends MethodCall {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(\"toInteger()\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}
+
+class PlusExpression extends BinaryExpression {
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(getLeft().toString()).append(\" + \").append(getRight().toString());\nreturn res.toString();")
+	op String toString()
+}
+
+class CustomStep extends Step {
+	String name
+	contains EObject[] params
+	@GenModel(body="StringBuffer res = new StringBuffer();\nres.append(name);\nres.append(\"(\");\nif(!getParams().isEmpty()) {\n\tString delim = \"\";\n\tfor(EObject p : params) {\n\t\tres.append(delim).append(p.toString());\n\t\tdelim = \",\";\n\t}\n}\nres.append(\")\");\nif(getNextElement() != null) {\n\tres.append(\".\").append(getNextElement().toString());\n}\nreturn res.toString();")
+	op String toString()
+}

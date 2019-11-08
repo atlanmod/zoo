@@ -1,0 +1,95 @@
+@Ecore(nsURI="http://zoo.atlanmod.org/emf-cobol")
+@GenModel(modelDirectory="/emf-cobol/src", importerID="org.eclipse.emf.importer.ecore")
+
+package org.eclipse.gmt.modisco.cobol
+
+enum COBOLUsageValue {
+	cuv_binary = 1
+	cuv_dbcs = 2
+	cuv_double = 3
+	cuv_display = 4
+	cuv_float = 5
+	cuv_index = 6
+	cuv_objectReference = 7
+	cuv_packedDecimal = 8
+	cuv_pointer = 9
+	cuv_procedurePointer = 10
+}
+
+enum COBOLInitialValueKind {
+	civk_string_value = 1
+	civk_low_value = 2
+	civk_high_value = 3
+	civk_zero_value = 4
+	civk_quotes = 5
+	civk_null = 6
+	civk_all_literal = 7
+}
+
+class COBOLElement {
+	String[1] level
+	Boolean[1] refined
+	String[1] name
+	refers COBOLClassifier[1] sharedType opposite typedElements
+	container COBOLComposedType group opposite elements
+	refers unordered COBOLElementInitialValue[] initial
+	contains unordered COBOL88Element[] ^contains
+	refers COBOLSourceText[1] source
+	contains COBOLFixedLengthArray array
+}
+
+class COBOLClassifier {
+	Boolean[1] typeded
+	String[1] name
+	refers unordered COBOLElement[] typedElements opposite sharedType
+}
+
+class COBOLSimpleType extends COBOLClassifier {
+	COBOLUsageValue[1] usageValue
+	String[1] pictureString
+	Boolean[1] usage
+}
+
+class COBOLComposedType extends COBOLClassifier {
+	contains unordered COBOLElement[] elements opposite group
+}
+
+class COBOLElementInitialValue {
+	String[1] initVal
+	COBOLInitialValueKind[1] valueKind
+}
+
+class COBOL88Element {
+	String[1] name
+	contains unordered COBOL88ElementValue[+] has
+}
+
+class COBOL88ElementValue {
+	String[1] lowerLimit
+	String[1] upperLimit
+	Boolean[1] range
+}
+
+class COBOLRedefiningElement extends COBOLElement {
+	refers COBOLElement[1] redefines
+}
+
+class COBOL66Element {
+	String[1] name
+	refers COBOLElement end
+	refers COBOLElement[1] start
+}
+
+class COBOLSourceText {
+	String[1] source
+	String[1] fileName
+}
+
+class COBOLFixedLengthArray {
+	Integer[1] maxUpper
+}
+
+class COBOLVariableLengthArray extends COBOLFixedLengthArray {
+	Integer[1] minUpper
+	refers COBOLElement[1] dependingOn
+}

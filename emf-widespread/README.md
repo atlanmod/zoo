@@ -1,3 +1,3 @@
-# Graph
+# Widespread
 
-Simple model for representing oriented graphs containing Vertices and Edges.
+Simple model for testing purposes.
