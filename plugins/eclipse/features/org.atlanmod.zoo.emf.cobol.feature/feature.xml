@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-        id="org.atlanmod.zoo.emf.smm.feature"
-        label="OMG SMM Ecore Model"
+        id="org.atlanmod.zoo.emf.cobol.feature"
+        label="Modisco COBOL Ecore Model"
         version="1.0.1.qualifier">
 
     <description url="http://www.example.com/description">
-        Structured Metrics Metamodel
+        COBOL abstract syntax used in Modisco
     </description>
 
     <plugin
-            id="org.omg.smm"
+            id="org.eclipse.gmt.modisco.cobol"
             download-size="0"
             install-size="0"
             version="1.0.1.qualifier"

@@ -8,19 +8,18 @@
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>org.atlanmod.zoo.emf.java.feature</artifactId>
+    <artifactId>org.atlanmod.zoo.emf.cobol.feature</artifactId>
 
     <packaging>eclipse-feature</packaging>
 
-    <name>Zoo Eclipse Features : EMF Java</name>
-    <description>Modisco Java abstract syntax</description>
+    <name>Zoo Eclipse Features : EMF COBOL</name>
+    <description>Modisco COBOL abstract syntax</description>
 
     <dependencies>
         <dependency>
             <groupId>org.atlanmod.zoo</groupId>
-            <artifactId>emf-java</artifactId>
+            <artifactId>emf-cobol</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
-
 </project>

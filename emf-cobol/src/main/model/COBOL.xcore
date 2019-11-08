@@ -1,5 +1,6 @@
 @Ecore(nsURI="http://zoo.atlanmod.org/emf-cobol")
-@GenModel(modelDirectory="/emf-cobol/src", importerID="org.eclipse.emf.importer.ecore")
+@GenModel(importerID="org.eclipse.emf.importer.ecore",
+modelDirectory="/emf-cobol/src/main/java-gen")
 
 package org.eclipse.gmt.modisco.cobol
 

@@ -3,19 +3,23 @@
 
     <!-- Features -->
 
-    <feature id="org.atlanmod.zoo.emf.java.feature" version="1.0.0.qualifier">
+    <feature id="org.atlanmod.zoo.emf.java.feature" version="1.0.1.qualifier">
         <category name="emf" />
     </feature>
 
-    <feature id="org.atlanmod.zoo.emf.smm.feature" version="1.0.0.qualifier">
+    <feature id="org.atlanmod.zoo.emf.smm.feature" version="1.0.1.qualifier">
+        <category name="emf" />
+    </feature>
+
+    <feature id="org.atlanmod.zoo.emf.cobol.feature" version="1.0.1.qualifier">
         <category name="emf" />
     </feature>
 
     <!-- Categories -->
 
-    <category-def name="emf" label="EMF">
+    <category-def name="emf" label="EMF Ecore Models">
         <description>
-            EMF models
+            EMF Ecore models
         </description>
     </category-def>
 

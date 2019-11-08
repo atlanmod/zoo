@@ -10,6 +10,7 @@
     <artifactId>emf-smm</artifactId>
     <name>EMF Structured Metrics Meta-Model</name>
     <packaging>bundle</packaging>
+    <description>Modisco Java SMM Model</description>
 
     <build>
         <plugins>

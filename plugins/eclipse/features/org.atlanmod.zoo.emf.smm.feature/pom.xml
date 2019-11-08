@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.atlanmod.zoo.eclipse</groupId>
         <artifactId>org.atlanmod.zoo.eclipse.features</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>org.atlanmod.zoo.emf.smm.feature</artifactId>

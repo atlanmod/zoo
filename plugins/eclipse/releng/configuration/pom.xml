@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.atlanmod.zoo</groupId>
         <artifactId>zoo</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
         <relativePath>../../../..</relativePath>
     </parent>
 
     <groupId>org.atlanmod.zoo.eclipse</groupId>
     <artifactId>org.atlanmod.zoo.eclipse.configuration</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 

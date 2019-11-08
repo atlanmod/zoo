@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
         id="org.atlanmod.zoo.emf.java.feature"
-        label="Atlanmod Zoo"
-        version="1.0.0.qualifier">
+        label="Modisco Java Ecore Model"
+        version="1.0.1.qualifier">
 
     <description url="http://www.example.com/description">
         Java abstract syntax used in modisco
@@ -12,7 +12,7 @@
             id="org.eclipse.gmt.modisco.java"
             download-size="0"
             install-size="0"
-            version="1.0.0.qualifier"
+            version="1.0.1.qualifier"
             unpack="false" />
 
     <copyright url="https://www.eclipse.org/legal/epl-2.0/">
