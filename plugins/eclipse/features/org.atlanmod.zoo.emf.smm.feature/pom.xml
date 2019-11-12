@@ -18,7 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>org.atlanmod.zoo</groupId>
-            <artifactId>emf-smm</artifactId>
+            <artifactId>emf.smm</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
