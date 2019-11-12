@@ -20,6 +20,7 @@
         <module>org.atlanmod.zoo.emf.java.feature</module>
         <module>org.atlanmod.zoo.emf.smm.feature</module>
         <module>org.atlanmod.zoo.emf.cobol.feature</module>
+        <module>org.atlanmod.zoo.emf.graph.feature</module>
     </modules>
 
 </project>

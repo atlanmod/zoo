@@ -31,6 +31,11 @@
             <artifactId>org.atlanmod.zoo.emf.cobol.feature</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.atlanmod.zoo.eclipse</groupId>
+            <artifactId>org.atlanmod.zoo.emf.graph.feature</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

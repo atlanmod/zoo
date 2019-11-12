@@ -529,7 +529,9 @@
                     <manifestLocation>${project.build.directory}/META-INF/</manifestLocation>
                     <exportScr>true</exportScr>
                     <instructions>
-                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-SymbolicName>
+                            ${project.groupId}.${project.artifactId}
+                        </Bundle-SymbolicName>
                         <Bundle-ClassPath>.,{maven-dependencies}</Bundle-ClassPath>
                         <Import-Package/>
                         <Export-Package>

@@ -15,6 +15,10 @@
         <category name="emf" />
     </feature>
 
+    <feature id="org.atlanmod.zoo.emf.graph.feature" version="1.0.1.qualifier">
+        <category name="emf" />
+    </feature>
+
     <!-- Categories -->
 
     <category-def name="emf" label="EMF Ecore Models">

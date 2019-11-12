@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.atlanmod.zoo.eclipse</groupId>
+        <artifactId>org.atlanmod.zoo.eclipse.features</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>org.atlanmod.zoo.emf.graph.feature</artifactId>
+
+    <packaging>eclipse-feature</packaging>
+
+    <name>Zoo Eclipse Features : EMF Graph</name>
+    <description>Simple Graph Model, for testing purpose</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.atlanmod.zoo</groupId>
+            <artifactId>emf.graph</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>
