@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>emf-cobol</artifactId>
+    <artifactId>emf.cobol</artifactId>
     <name>EMF Modisco COBOL Model</name>
     <packaging>bundle</packaging>
 

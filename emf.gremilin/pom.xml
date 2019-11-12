@@ -7,7 +7,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>emf-widespread</artifactId>
+    <artifactId>emf.gremilin</artifactId>
+    <name>EMF Gremilin Abstract Syntax</name>
     <packaging>bundle</packaging>
-    <name>EMF Widespread Model</name>
+
 </project>

@@ -81,17 +81,16 @@
     </properties>
 
     <modules>
-        <module>emf-graph</module>
-        <module>emf-java</module>
-        <module>emf-trace</module>
-        <module>emf-types</module>
-        <module>emf-widespread</module>
-        <module>emf-cobol</module>
-        <module>emf-iotmodel</module>
-        <module>emf-smm</module>
-        <module>neoemf-java</module>
-        <module>emf-gremilin</module>
-        <module>plugins/eclipse</module>
+        <module>emf.graph</module>
+        <module>emf.java</module>
+        <module>emf.trace</module>
+        <module>emf.types</module>
+        <module>emf.widespread</module>
+        <module>emf.cobol</module>
+        <module>emf.iotmodel</module>
+        <module>emf.smm</module>
+        <module>neoemf.java</module>
+        <module>emf.gremilin</module>
     </modules>
 
     <dependencyManagement>

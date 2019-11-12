@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>emf-trace</artifactId>
-    <name>EMF Trace Model</name>
+    <artifactId>emf.types</artifactId>
+    <name>EMF Types Model</name>
     <packaging>bundle</packaging>
 </project>

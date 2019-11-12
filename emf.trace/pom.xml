@@ -7,8 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>emf-gremilin</artifactId>
-    <name>EMF Gremilin Abstract Syntax</name>
+    <artifactId>emf.trace</artifactId>
+    <name>EMF Trace Model</name>
     <packaging>bundle</packaging>
-
 </project>

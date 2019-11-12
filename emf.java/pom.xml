@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>emf-java</artifactId>
+    <artifactId>emf.java</artifactId>
     <name>EMF Modisco Java Model</name>
     <packaging>bundle</packaging>
 
