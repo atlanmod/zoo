@@ -19,11 +19,22 @@
         <category name="emf" />
     </feature>
 
+    <feature id="org.atlanmod.zoo.neoemf.java.feature" version="1.0.1.qualifier">
+        <category name="neoemf" />
+    </feature>
+
+
     <!-- Categories -->
 
     <category-def name="emf" label="EMF Ecore Models">
         <description>
             EMF Ecore models
+        </description>
+    </category-def>
+
+    <category-def name="neoemf" label="NeoEMF Ecore Models">
+        <description>
+            NeoEMF Ecore models
         </description>
     </category-def>
 

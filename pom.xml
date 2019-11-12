@@ -91,6 +91,7 @@
         <module>emf-smm</module>
         <module>neoemf-java</module>
         <module>emf-gremilin</module>
+        <module>plugins/eclipse</module>
     </modules>
 
     <dependencyManagement>

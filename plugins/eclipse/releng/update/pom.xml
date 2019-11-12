@@ -36,6 +36,11 @@
             <artifactId>org.atlanmod.zoo.emf.graph.feature</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.atlanmod.zoo.eclipse</groupId>
+            <artifactId>org.atlanmod.zoo.neoemf.java.feature</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -21,6 +21,7 @@
         <module>org.atlanmod.zoo.emf.smm.feature</module>
         <module>org.atlanmod.zoo.emf.cobol.feature</module>
         <module>org.atlanmod.zoo.emf.graph.feature</module>
+        <module>org.atlanmod.zoo.neoemf.java.feature</module>
     </modules>
 
 </project>
