@@ -1,9 +1,10 @@
 @xcore.lang.Ecore(nsPrefix="social", nsURI="https://www.transformation-tool-contest.eu/2018/social_media")
 @xcore.lang.GenModel(importerID="org.eclipse.emf.importer.ecore",
 modelDirectory="/emf.socialnetwork/src/main/java-gen",
-modelName="Social_network")
+prefix="SocialNetwork",
+modelName="SocialNetwork")
 
-package SocialNetwork
+package org.atlanmod.zoo.socialnetwork
 
 abstract class Submission {
 	unordered id String[1] ^id
