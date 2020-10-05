@@ -2,7 +2,9 @@
 @xcore.lang.GenModel(importerID="org.eclipse.emf.importer.ecore",
 modelDirectory="/emf.socialnetwork/src/main/java-gen",
 prefix="SocialNetwork",
-modelName="SocialNetwork")
+modelName="SocialNetwork",
+rootExtendsInterface="org.atlanmod.SerializableEObject",
+rootExtendsClass="org.atlanmod.DefaultSerializableEObject")
 
 package org.atlanmod.zoo.socialnetwork
 
