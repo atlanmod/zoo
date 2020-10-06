@@ -24,15 +24,17 @@ standard EMF models and (ii) models for generating NeoEMF specific code.
 === Standard EMF resources
 
 Some examples of standard EMF available models are:
-- link:./emf-graph/[Simple graph]: A simple syntax for representing oriented
+
+- link:./emf.graph/[Simple graph]: A simple syntax for representing oriented
 graphs (mostly used for testing purposes.
-- link:./emf-java/[Java]: Java language syntax model, used by the https://www.eclipse.org/MoDisco/[Modisco] tool)
-- link:./emf-cobol/[Cobol]: COBOL language syntax model.
-- link:./emf-smm[SMM]; Structured Metrics Meta-model.
+- link:./emf.java/[Java]: Java language syntax model, used by the https://www.eclipse.org/MoDisco/[Modisco] tool)
+- link:./emf.cobol/[Cobol]: COBOL language syntax model.
+- link:./emf.smm[SMM]; Structured Metrics Meta-model.
+- link:./emf.socialnetwork/[Social Network]: The TTC 2018 Social Media Case, presented in https://github.com/TransformationToolContest/ttc2018liveContest[TTC18].
 
 === NeoEMF resources
 
-Ecore models for using together with the http://www.neoemf.com[NeoEMF] model persistence solution:
+Ecore models for using together with https://neoemf.atlanmod.org/[NeoEMF] model persistence solution:
 
 * link:./neoemf-java/[Java]: Java language syntax model.
 
@@ -46,7 +48,7 @@ For instance, the dependency for Modisco Java's abstract syntax is:
 <dependency>
     <artifactId>emf-java</artifactId>
     <groupId>org.atlanmod.zoo</groupId>
-    <version>1.0.0</version>
+    <version>1.0.4</version>
 </dependency>
 ----
 
