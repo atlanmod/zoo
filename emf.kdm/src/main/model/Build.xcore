@@ -1,6 +1,6 @@
 @Ecore(nsURI="http://schema.omg.org/spec/KDM/1.2/build")
 @GenModel(copyrightText="\r\nCopyright (c) 2009 Hatha Systems.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Nikolai Mansourov (Hatha Systems) - initial API and implementation\r\n    Gabriel Barbier (Mia-Software) - minor evolutions for version 1.1",
-	modelDirectory="/org.eclipse.gmt.modisco.omg.kdm/src", modelPluginID="org.eclipse.gmt.modisco.omg.kdm",
+	modelDirectory="/emf.kdm/src/main/java-gen",
 	modelName="Kdm", nonNLSMarkers="true", importerID="org.eclipse.emf.importer.ecore")
 package org.eclipse.gmt.modisco.omg.KDM.build
 

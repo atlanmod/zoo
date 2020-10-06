@@ -16,11 +16,6 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <configuration>
-                    <instructions>
-                        <Bundle-SymbolicName>org.eclipse.gmt.modisco.kdm</Bundle-SymbolicName>
-                    </instructions>
-                </configuration>
             </plugin>
         </plugins>
     </build>
