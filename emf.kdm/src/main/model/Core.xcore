@@ -1,0 +1,55 @@
+@Ecore(nsURI="http://schema.omg.org/spec/KDM/1.2/core")
+@GenModel(copyrightText="\r\nCopyright (c) 2009 Hatha Systems.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Nikolai Mansourov (Hatha Systems) - initial API and implementation\r\n    Gabriel Barbier (Mia-Software) - minor evolutions for version 1.1",
+	modelDirectory="/org.eclipse.gmt.modisco.omg.kdm/src", modelPluginID="org.eclipse.gmt.modisco.omg.kdm",
+	modelName="Kdm", nonNLSMarkers="true", importerID="org.eclipse.emf.importer.ecore")
+package org.eclipse.gmt.modisco.omg.KDM.core
+
+import org.eclipse.gmt.modisco.omg.KDM.kdm.Annotation
+import org.eclipse.gmt.modisco.omg.KDM.kdm.Attribute
+import org.eclipse.gmt.modisco.omg.KDM.kdm.ExtendedValue
+import org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel
+import org.eclipse.gmt.modisco.omg.KDM.kdm.Stereotype
+
+interface Element {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.kdm.Attribute[] attribute
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.kdm.Annotation[] ^annotation
+}
+
+interface ModelElement extends org.eclipse.gmt.modisco.omg.KDM.core.Element {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.kdm.Stereotype[] stereotype
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.kdm.ExtendedValue[] taggedValue
+}
+
+interface KDMEntity extends org.eclipse.gmt.modisco.omg.KDM.core.ModelElement {
+	org.eclipse.gmt.modisco.omg.KDM.core.String name
+	op void createAggregation(org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[1] otherEntity)
+	op void deleteAggregation(org.eclipse.gmt.modisco.omg.KDM.core.AggregatedRelationship[1] aggregation)
+	op unique org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship[] getInbound()
+	op unique org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship[] getOutbound()
+	op unique org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship[] getOwnedRelation()
+	op unique org.eclipse.gmt.modisco.omg.KDM.core.AggregatedRelationship[] getInAggregated()
+	op unique org.eclipse.gmt.modisco.omg.KDM.core.AggregatedRelationship[] getOutAggregated()
+	op org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity getOwner()
+	op unique org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[] getOwnedElement()
+	op unique org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[] getGroup()
+	op unique org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[] getGroupedElement()
+	op org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel getModel()
+}
+
+interface KDMRelationship extends org.eclipse.gmt.modisco.omg.KDM.core.ModelElement {
+	op org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[1] getTo()
+	op org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[1] getFrom()
+}
+
+class AggregatedRelationship extends org.eclipse.gmt.modisco.omg.KDM.core.ModelElement {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[1] from
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship[] relation
+	org.eclipse.gmt.modisco.omg.KDM.core.Integer density
+}
+
+type String wraps String
+
+type Integer wraps Integer
+
+type Boolean wraps Boolean

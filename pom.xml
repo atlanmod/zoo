@@ -92,6 +92,7 @@
         <module>neoemf.java</module>
         <module>emf.gremilin</module>
         <module>emf.socialnetwork</module>
+        <module>emf.kdm</module>
     </modules>
 
     <dependencyManagement>

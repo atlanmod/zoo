@@ -26,9 +26,10 @@ standard EMF models and (ii) models for generating NeoEMF specific code.
 Some examples of standard EMF available models are:
 
 - link:./emf.graph/[Simple graph]: A simple syntax for representing oriented
-graphs (mostly used for testing purposes.
-- link:./emf.java/[Java]: Java language syntax model, used by the https://www.eclipse.org/MoDisco/[Modisco] tool)
+graphs mostly used for testing purposes.
+- link:./emf.java/[Java]: Java language syntax model, used by the https://www.eclipse.org/MoDisco/[Modisco] tool.
 - link:./emf.cobol/[Cobol]: COBOL language syntax model.
+- link:./emf.kdm/[KDM]: Knowledge Discovery Metamodel (KDM), used by the https://www.eclipse.org/MoDisco/[Modisco] tool.
 - link:./emf.smm[SMM]; Structured Metrics Meta-model.
 - link:./emf.socialnetwork/[Social Network]: The TTC 2018 Social Media Case, presented in https://github.com/TransformationToolContest/ttc2018liveContest[TTC18].
 
@@ -51,6 +52,10 @@ For instance, the dependency for Modisco Java's abstract syntax is:
     <version>1.0.4</version>
 </dependency>
 ----
+
+All models expect EMF artifacts to be provided by the environment.
+If you intend to use these models outside Eclipse, we suggest taking a look at the
+https://github.com/atlanmod/emf-maven[EMF-Maven] project.
 
 == Eclipse Update Site
 

@@ -1,0 +1,89 @@
+@Ecore(nsURI="http://schema.omg.org/spec/KDM/1.2/event")
+@GenModel(copyrightText="\r\nCopyright (c) 2009 Hatha Systems.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Nikolai Mansourov (Hatha Systems) - initial API and implementation\r\n    Gabriel Barbier (Mia-Software) - minor evolutions for version 1.1",
+	modelDirectory="/org.eclipse.gmt.modisco.omg.kdm/src", modelPluginID="org.eclipse.gmt.modisco.omg.kdm",
+	modelName="Kdm", nonNLSMarkers="true", importerID="org.eclipse.emf.importer.ecore")
+package org.eclipse.gmt.modisco.omg.KDM.event
+
+import org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship
+import org.eclipse.gmt.modisco.omg.KDM.action.ActionElement
+import org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement
+import org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity
+import org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship
+import org.eclipse.gmt.modisco.omg.KDM.core.String
+import org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel
+import org.eclipse.gmt.modisco.omg.KDM.source.SourceRef
+
+class EventModel extends org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.event.AbstractEventElement[] eventElement
+}
+
+interface AbstractEventElement extends org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.source.SourceRef[] source
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.event.AbstractEventRelationship[] eventRelation
+	contains org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[] abstraction
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement[] implementation
+}
+
+class Event extends org.eclipse.gmt.modisco.omg.KDM.event.AbstractEventElement {
+	org.eclipse.gmt.modisco.omg.KDM.core.String kind
+}
+
+interface AbstractEventRelationship extends org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship {
+}
+
+class EventRelationship extends org.eclipse.gmt.modisco.omg.KDM.event.AbstractEventRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.event.AbstractEventElement[1] from
+}
+
+class EventResource extends org.eclipse.gmt.modisco.omg.KDM.event.AbstractEventElement {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.event.AbstractEventElement[] eventElement
+}
+
+class State extends org.eclipse.gmt.modisco.omg.KDM.event.EventResource {
+}
+
+class Transition extends org.eclipse.gmt.modisco.omg.KDM.event.EventResource {
+}
+
+class OnEntry extends org.eclipse.gmt.modisco.omg.KDM.event.Transition {
+}
+
+class OnExit extends org.eclipse.gmt.modisco.omg.KDM.event.Transition {
+}
+
+class EventAction extends org.eclipse.gmt.modisco.omg.KDM.event.AbstractEventElement {
+	org.eclipse.gmt.modisco.omg.KDM.core.String kind
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.event.Event[] eventElement
+}
+
+class ReadsState extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.event.State[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class ProducesEvent extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.event.Event[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class ConsumesEvent extends org.eclipse.gmt.modisco.omg.KDM.event.AbstractEventRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.event.Event[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.event.Transition[1] from
+}
+
+class NextState extends org.eclipse.gmt.modisco.omg.KDM.event.AbstractEventRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.event.State[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.event.Transition[1] from
+}
+
+class InitialState extends org.eclipse.gmt.modisco.omg.KDM.event.State {
+}
+
+class EventElement extends org.eclipse.gmt.modisco.omg.KDM.event.AbstractEventElement {
+}
+
+class HasState extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.event.AbstractEventElement[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}

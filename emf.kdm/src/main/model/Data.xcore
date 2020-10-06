@@ -1,0 +1,195 @@
+@Ecore(nsURI="http://schema.omg.org/spec/KDM/1.2/data")
+@GenModel(copyrightText="\r\nCopyright (c) 2009 Hatha Systems.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Nikolai Mansourov (Hatha Systems) - initial API and implementation\r\n    Gabriel Barbier (Mia-Software) - minor evolutions for version 1.1",
+	modelDirectory="/org.eclipse.gmt.modisco.omg.kdm/src", modelPluginID="org.eclipse.gmt.modisco.omg.kdm",
+	modelName="Kdm", nonNLSMarkers="true", importerID="org.eclipse.emf.importer.ecore")
+package org.eclipse.gmt.modisco.omg.KDM.data
+
+import org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship
+import org.eclipse.gmt.modisco.omg.KDM.action.ActionElement
+import org.eclipse.gmt.modisco.omg.KDM.code.CodeItem
+import org.eclipse.gmt.modisco.omg.KDM.code.Datatype
+import org.eclipse.gmt.modisco.omg.KDM.code.ItemUnit
+import org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity
+import org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship
+import org.eclipse.gmt.modisco.omg.KDM.core.String
+import org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel
+import org.eclipse.gmt.modisco.omg.KDM.source.SourceRef
+
+class DataModel extends org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataElement[] dataElement
+}
+
+interface AbstractDataElement extends org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.source.SourceRef[] source
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataRelationship[] dataRelation
+	contains org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[] abstraction
+}
+
+class DataResource extends org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataElement {
+}
+
+class IndexElement extends org.eclipse.gmt.modisco.omg.KDM.data.DataResource {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.ItemUnit[] implementation
+}
+
+class UniqueKey extends org.eclipse.gmt.modisco.omg.KDM.data.IndexElement {
+}
+
+class Index extends org.eclipse.gmt.modisco.omg.KDM.data.IndexElement {
+}
+
+interface AbstractDataRelationship extends org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship {
+}
+
+class KeyRelation extends org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.UniqueKey[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.ReferenceKey[1] from
+}
+
+class ReferenceKey extends org.eclipse.gmt.modisco.omg.KDM.data.IndexElement {
+}
+
+class DataContainer extends org.eclipse.gmt.modisco.omg.KDM.data.DataResource {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.data.DataResource[] dataElement
+}
+
+class Catalog extends org.eclipse.gmt.modisco.omg.KDM.data.DataContainer {
+}
+
+class RelationalSchema extends org.eclipse.gmt.modisco.omg.KDM.data.DataContainer {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[] codeElement
+}
+
+class ColumnSet extends org.eclipse.gmt.modisco.omg.KDM.data.DataContainer {
+	contains org.eclipse.gmt.modisco.omg.KDM.code.ItemUnit[] itemUnit
+}
+
+class RelationalTable extends org.eclipse.gmt.modisco.omg.KDM.data.ColumnSet {
+}
+
+class RelationalView extends org.eclipse.gmt.modisco.omg.KDM.data.ColumnSet {
+}
+
+class RecordFile extends org.eclipse.gmt.modisco.omg.KDM.data.ColumnSet {
+}
+
+class DataEvent extends org.eclipse.gmt.modisco.omg.KDM.data.DataResource {
+	org.eclipse.gmt.modisco.omg.KDM.core.String kind
+}
+
+class XMLSchema extends org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataElement {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.data.AbstractContentElement[] contentElement
+}
+
+interface AbstractContentElement extends org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataElement {
+}
+
+class ComplexContentType extends org.eclipse.gmt.modisco.omg.KDM.data.AbstractContentElement {
+	contains org.eclipse.gmt.modisco.omg.KDM.data.AbstractContentElement[] contentElement
+}
+
+class AllContent extends org.eclipse.gmt.modisco.omg.KDM.data.ComplexContentType {
+}
+
+class SeqContent extends org.eclipse.gmt.modisco.omg.KDM.data.ComplexContentType {
+}
+
+class ChoiceContent extends org.eclipse.gmt.modisco.omg.KDM.data.ComplexContentType {
+}
+
+class ContentItem extends org.eclipse.gmt.modisco.omg.KDM.data.AbstractContentElement {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.ComplexContentType ^type
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.data.AbstractContentElement[] contentElement
+}
+
+class GroupContent extends org.eclipse.gmt.modisco.omg.KDM.data.ContentItem {
+}
+
+class ContentRestriction extends org.eclipse.gmt.modisco.omg.KDM.data.AbstractContentElement {
+	org.eclipse.gmt.modisco.omg.KDM.core.String kind
+	org.eclipse.gmt.modisco.omg.KDM.core.String value
+}
+
+class SimpleContentType extends org.eclipse.gmt.modisco.omg.KDM.data.ComplexContentType {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.ComplexContentType[] ^type
+	org.eclipse.gmt.modisco.omg.KDM.core.String kind
+}
+
+class ExtendedDataElement extends org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataElement {
+}
+
+class DataRelationship extends org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataElement[1] from
+}
+
+class MixedContent extends org.eclipse.gmt.modisco.omg.KDM.data.ComplexContentType {
+}
+
+class ContentReference extends org.eclipse.gmt.modisco.omg.KDM.data.ContentItem {
+}
+
+class DataAction extends org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataElement {
+	org.eclipse.gmt.modisco.omg.KDM.core.String kind
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[] implementation
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.data.DataEvent[] dataElement
+}
+
+class ReadsColumnSet extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.ColumnSet[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class ContentAttribute extends org.eclipse.gmt.modisco.omg.KDM.data.ContentItem {
+}
+
+class TypedBy extends org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.ComplexContentType[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.ContentItem[1] from
+}
+
+class ReferenceTo extends org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.ContentItem[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.ContentItem[1] from
+}
+
+class RestrictionOf extends org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.ComplexContentType[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.ComplexContentType[1] from
+}
+
+class ExtensionTo extends org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.ComplexContentType[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.ComplexContentType[1] from
+}
+
+class DatatypeOf extends org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.Datatype[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.ComplexContentType[1] from
+}
+
+class HasContent extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataElement[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class WritesColumnSet extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.ColumnSet[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class ProducesDataEvent extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.DataEvent[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class DataSegment extends org.eclipse.gmt.modisco.omg.KDM.data.ColumnSet {
+}
+
+class ContentElement extends org.eclipse.gmt.modisco.omg.KDM.data.ContentItem {
+}
+
+class ManagesData extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.data.AbstractDataElement[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}

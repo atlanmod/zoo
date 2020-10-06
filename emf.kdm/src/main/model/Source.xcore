@@ -1,0 +1,88 @@
+@Ecore(nsURI="http://schema.omg.org/spec/KDM/1.2/source")
+@GenModel(copyrightText="\r\nCopyright (c) 2009 Hatha Systems.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Nikolai Mansourov (Hatha Systems) - initial API and implementation\r\n    Gabriel Barbier (Mia-Software) - minor evolutions for version 1.1",
+	modelDirectory="/org.eclipse.gmt.modisco.omg.kdm/src", modelPluginID="org.eclipse.gmt.modisco.omg.kdm",
+	modelName="Kdm", nonNLSMarkers="true", importerID="org.eclipse.emf.importer.ecore")
+package org.eclipse.gmt.modisco.omg.KDM.source
+
+import org.eclipse.gmt.modisco.omg.KDM.core.Element
+import org.eclipse.gmt.modisco.omg.KDM.core.Integer
+import org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity
+import org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship
+import org.eclipse.gmt.modisco.omg.KDM.core.String
+import org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel
+
+class SourceRef extends org.eclipse.gmt.modisco.omg.KDM.core.Element {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.source.SourceRegion[] region
+	org.eclipse.gmt.modisco.omg.KDM.core.String language
+	org.eclipse.gmt.modisco.omg.KDM.core.String snippet
+}
+
+class SourceRegion extends org.eclipse.gmt.modisco.omg.KDM.core.Element {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.source.SourceFile file
+	org.eclipse.gmt.modisco.omg.KDM.core.Integer startLine
+	org.eclipse.gmt.modisco.omg.KDM.core.Integer startPosition
+	org.eclipse.gmt.modisco.omg.KDM.core.Integer endLine
+	org.eclipse.gmt.modisco.omg.KDM.core.Integer endPosition
+	org.eclipse.gmt.modisco.omg.KDM.core.String language
+	org.eclipse.gmt.modisco.omg.KDM.core.String path
+}
+
+class InventoryModel extends org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.source.AbstractInventoryElement[] inventoryElement
+}
+
+interface AbstractInventoryElement extends org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.source.AbstractInventoryRelationship[] inventoryRelation
+}
+
+class InventoryItem extends org.eclipse.gmt.modisco.omg.KDM.source.AbstractInventoryElement {
+	org.eclipse.gmt.modisco.omg.KDM.core.String version
+	org.eclipse.gmt.modisco.omg.KDM.core.String path
+}
+
+class SourceFile extends org.eclipse.gmt.modisco.omg.KDM.source.InventoryItem {
+	org.eclipse.gmt.modisco.omg.KDM.core.String language
+	org.eclipse.gmt.modisco.omg.KDM.core.String encoding
+}
+
+class Image extends org.eclipse.gmt.modisco.omg.KDM.source.InventoryItem {
+}
+
+class ResourceDescription extends org.eclipse.gmt.modisco.omg.KDM.source.InventoryItem {
+}
+
+class Configuration extends org.eclipse.gmt.modisco.omg.KDM.source.InventoryItem {
+}
+
+class InventoryContainer extends org.eclipse.gmt.modisco.omg.KDM.source.AbstractInventoryElement {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.source.AbstractInventoryElement[] inventoryElement
+}
+
+class Directory extends org.eclipse.gmt.modisco.omg.KDM.source.InventoryContainer {
+	org.eclipse.gmt.modisco.omg.KDM.core.String path
+}
+
+class Project extends org.eclipse.gmt.modisco.omg.KDM.source.InventoryContainer {
+}
+
+interface AbstractInventoryRelationship extends org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship {
+}
+
+class BinaryFile extends org.eclipse.gmt.modisco.omg.KDM.source.InventoryItem {
+}
+
+class ExecutableFile extends org.eclipse.gmt.modisco.omg.KDM.source.InventoryItem {
+}
+
+class DependsOn extends org.eclipse.gmt.modisco.omg.KDM.source.AbstractInventoryRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.source.AbstractInventoryElement[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.source.AbstractInventoryElement[1] from
+}
+
+class InventoryElement extends org.eclipse.gmt.modisco.omg.KDM.source.AbstractInventoryElement {
+}
+
+class InventoryRelationship extends org.eclipse.gmt.modisco.omg.KDM.source.AbstractInventoryRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.source.AbstractInventoryElement[1] from
+}

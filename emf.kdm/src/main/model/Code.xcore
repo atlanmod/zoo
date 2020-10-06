@@ -1,0 +1,390 @@
+@Ecore(nsURI="http://schema.omg.org/spec/KDM/1.2/code")
+@GenModel(copyrightText="\r\nCopyright (c) 2009 Hatha Systems.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Nikolai Mansourov (Hatha Systems) - initial API and implementation\r\n    Gabriel Barbier (Mia-Software) - minor evolutions for version 1.1",
+	modelDirectory="/org.eclipse.gmt.modisco.omg.kdm/src", modelPluginID="org.eclipse.gmt.modisco.omg.kdm",
+	modelName="Kdm", nonNLSMarkers="true", importerID="org.eclipse.emf.importer.ecore")
+package org.eclipse.gmt.modisco.omg.KDM.code
+
+import org.eclipse.gmt.modisco.omg.KDM.action.EntryFlow
+import org.eclipse.gmt.modisco.omg.KDM.core.Boolean
+import org.eclipse.gmt.modisco.omg.KDM.core.Integer
+import org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity
+import org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship
+import org.eclipse.gmt.modisco.omg.KDM.core.ModelElement
+import org.eclipse.gmt.modisco.omg.KDM.core.String
+import org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel
+import org.eclipse.gmt.modisco.omg.KDM.source.SourceRef
+
+interface AbstractCodeElement extends org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.source.SourceRef[] source
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.code.CommentUnit[] comment
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.action.EntryFlow[] entryFlow
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship[] codeRelation
+}
+
+interface CodeItem extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement {
+}
+
+class ComputationalObject extends org.eclipse.gmt.modisco.omg.KDM.code.CodeItem {
+}
+
+class ControlElement extends org.eclipse.gmt.modisco.omg.KDM.code.ComputationalObject {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.Datatype ^type
+	contains org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement[] codeElement
+}
+
+class MethodUnit extends org.eclipse.gmt.modisco.omg.KDM.code.ControlElement {
+	org.eclipse.gmt.modisco.omg.KDM.code.MethodKind kind
+	org.eclipse.gmt.modisco.omg.KDM.code.ExportKind export
+}
+
+class Module extends org.eclipse.gmt.modisco.omg.KDM.code.CodeItem {
+	contains org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement[] codeElement
+}
+
+class CodeAssembly extends org.eclipse.gmt.modisco.omg.KDM.code.Module {
+}
+
+class CallableUnit extends org.eclipse.gmt.modisco.omg.KDM.code.ControlElement {
+	org.eclipse.gmt.modisco.omg.KDM.code.CallableKind kind
+}
+
+class Datatype extends org.eclipse.gmt.modisco.omg.KDM.code.CodeItem {
+}
+
+class TemplateUnit extends org.eclipse.gmt.modisco.omg.KDM.code.Datatype {
+	contains org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[] codeElement
+}
+
+class TemplateParameter extends org.eclipse.gmt.modisco.omg.KDM.code.Datatype {
+}
+
+interface AbstractCodeRelationship extends org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship {
+}
+
+class InstanceOf extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.TemplateUnit[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement[1] from
+}
+
+class CompilationUnit extends org.eclipse.gmt.modisco.omg.KDM.code.Module {
+}
+
+class CodeModel extends org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement[] codeElement
+}
+
+class DerivedType extends org.eclipse.gmt.modisco.omg.KDM.code.Datatype {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.code.ItemUnit[1] itemUnit
+}
+
+class ArrayType extends org.eclipse.gmt.modisco.omg.KDM.code.DerivedType {
+	org.eclipse.gmt.modisco.omg.KDM.core.Integer size
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.code.IndexUnit[1] indexUnit
+}
+
+class PrimitiveType extends org.eclipse.gmt.modisco.omg.KDM.code.Datatype {
+}
+
+class BooleanType extends org.eclipse.gmt.modisco.omg.KDM.code.PrimitiveType {
+}
+
+class CharType extends org.eclipse.gmt.modisco.omg.KDM.code.PrimitiveType {
+}
+
+class ClassUnit extends org.eclipse.gmt.modisco.omg.KDM.code.Datatype {
+	org.eclipse.gmt.modisco.omg.KDM.core.Boolean isAbstract
+	contains org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[] codeElement
+}
+
+class CompositeType extends org.eclipse.gmt.modisco.omg.KDM.code.Datatype {
+	contains org.eclipse.gmt.modisco.omg.KDM.code.ItemUnit[] itemUnit
+}
+
+class RecordType extends org.eclipse.gmt.modisco.omg.KDM.code.CompositeType {
+}
+
+class EnumeratedType extends org.eclipse.gmt.modisco.omg.KDM.code.Datatype {
+	contains org.eclipse.gmt.modisco.omg.KDM.code.Value[] value
+}
+
+class Extends extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.Datatype[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.Datatype[1] from
+}
+
+class ScaledType extends org.eclipse.gmt.modisco.omg.KDM.code.PrimitiveType {
+}
+
+class FloatType extends org.eclipse.gmt.modisco.omg.KDM.code.PrimitiveType {
+}
+
+class HasType extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.Datatype[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[1] from
+}
+
+class ImplementationOf extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[1] from
+}
+
+class Implements extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[1] from
+}
+
+class IntegerType extends org.eclipse.gmt.modisco.omg.KDM.code.PrimitiveType {
+}
+
+class InterfaceUnit extends org.eclipse.gmt.modisco.omg.KDM.code.Datatype {
+	contains org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[] codeElement
+}
+
+class PointerType extends org.eclipse.gmt.modisco.omg.KDM.code.DerivedType {
+}
+
+interface DefinedType extends org.eclipse.gmt.modisco.omg.KDM.code.Datatype {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.Datatype[1] ^type
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.code.Datatype codeElement
+}
+
+class TypeUnit extends org.eclipse.gmt.modisco.omg.KDM.code.DefinedType {
+}
+
+class RangeType extends org.eclipse.gmt.modisco.omg.KDM.code.DerivedType {
+	org.eclipse.gmt.modisco.omg.KDM.core.Integer lower
+	org.eclipse.gmt.modisco.omg.KDM.core.Integer upper
+}
+
+class Signature extends org.eclipse.gmt.modisco.omg.KDM.code.Datatype {
+	contains org.eclipse.gmt.modisco.omg.KDM.code.ParameterUnit[] parameterUnit
+}
+
+class DataElement extends org.eclipse.gmt.modisco.omg.KDM.code.ComputationalObject {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.Datatype[1] ^type
+	org.eclipse.gmt.modisco.omg.KDM.core.String ext
+	org.eclipse.gmt.modisco.omg.KDM.core.Integer size
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.code.Datatype[] codeElement
+}
+
+class StringType extends org.eclipse.gmt.modisco.omg.KDM.code.PrimitiveType {
+}
+
+class ChoiceType extends org.eclipse.gmt.modisco.omg.KDM.code.CompositeType {
+}
+
+class NamespaceUnit extends org.eclipse.gmt.modisco.omg.KDM.code.CodeItem {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[] groupedCode
+}
+
+class VisibleIn extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[1] from
+}
+
+class CommentUnit extends org.eclipse.gmt.modisco.omg.KDM.core.ModelElement {
+	org.eclipse.gmt.modisco.omg.KDM.core.String text
+}
+
+class SharedUnit extends org.eclipse.gmt.modisco.omg.KDM.code.CompilationUnit {
+}
+
+class DecimalType extends org.eclipse.gmt.modisco.omg.KDM.code.PrimitiveType {
+}
+
+class DateType extends org.eclipse.gmt.modisco.omg.KDM.code.PrimitiveType {
+}
+
+class TimeType extends org.eclipse.gmt.modisco.omg.KDM.code.PrimitiveType {
+}
+
+enum MethodKind {
+	method
+	constructor = 1
+	destructor = 2
+	operator = 3
+	virtual = 4
+	^abstract = 5
+	unknown = 6
+}
+
+class VoidType extends org.eclipse.gmt.modisco.omg.KDM.code.PrimitiveType {
+}
+
+class ValueElement extends org.eclipse.gmt.modisco.omg.KDM.code.DataElement {
+}
+
+class Value extends org.eclipse.gmt.modisco.omg.KDM.code.ValueElement {
+}
+
+class ValueList extends org.eclipse.gmt.modisco.omg.KDM.code.ValueElement {
+	contains org.eclipse.gmt.modisco.omg.KDM.code.ValueElement[] valueElement
+}
+
+class StorableUnit extends org.eclipse.gmt.modisco.omg.KDM.code.DataElement {
+	org.eclipse.gmt.modisco.omg.KDM.code.StorableKind kind
+}
+
+class MemberUnit extends org.eclipse.gmt.modisco.omg.KDM.code.DataElement {
+	org.eclipse.gmt.modisco.omg.KDM.code.ExportKind export
+}
+
+class ParameterUnit extends org.eclipse.gmt.modisco.omg.KDM.code.DataElement {
+	org.eclipse.gmt.modisco.omg.KDM.code.ParameterKind kind
+	org.eclipse.gmt.modisco.omg.KDM.core.Integer pos
+}
+
+class ItemUnit extends org.eclipse.gmt.modisco.omg.KDM.code.DataElement {
+}
+
+class IndexUnit extends org.eclipse.gmt.modisco.omg.KDM.code.DataElement {
+}
+
+class SynonymType extends org.eclipse.gmt.modisco.omg.KDM.code.DefinedType {
+}
+
+class SequenceType extends org.eclipse.gmt.modisco.omg.KDM.code.DerivedType {
+	org.eclipse.gmt.modisco.omg.KDM.core.Integer size
+}
+
+class BagType extends org.eclipse.gmt.modisco.omg.KDM.code.DerivedType {
+	org.eclipse.gmt.modisco.omg.KDM.core.Integer size
+}
+
+class SetType extends org.eclipse.gmt.modisco.omg.KDM.code.DerivedType {
+	org.eclipse.gmt.modisco.omg.KDM.core.Integer size
+}
+
+class CodeElement extends org.eclipse.gmt.modisco.omg.KDM.code.CodeItem {
+}
+
+class CodeRelationship extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[1] from
+}
+
+enum ParameterKind {
+	byValue
+	byName = 1
+	byReference = 2
+	variadic = 3
+	^return = 4
+	^throws = 5
+	exception = 6
+	catchall = 7
+	unknown = 8
+}
+
+enum ExportKind {
+	public
+	private = 1
+	protected = 2
+	final = 3
+	unknown = 4
+}
+
+class LanguageUnit extends org.eclipse.gmt.modisco.omg.KDM.code.Module {
+}
+
+class OrdinalType extends org.eclipse.gmt.modisco.omg.KDM.code.PrimitiveType {
+}
+
+class BitstringType extends org.eclipse.gmt.modisco.omg.KDM.code.PrimitiveType {
+}
+
+class OctetType extends org.eclipse.gmt.modisco.omg.KDM.code.PrimitiveType {
+}
+
+class OctetstringType extends org.eclipse.gmt.modisco.omg.KDM.code.PrimitiveType {
+}
+
+class BitType extends org.eclipse.gmt.modisco.omg.KDM.code.PrimitiveType {
+}
+
+enum StorableKind {
+	global
+	^local = 1
+	^static = 2
+	external = 3
+	register = 4
+	unknown = 5
+}
+
+enum CallableKind {
+	external
+	regular = 1
+	operator = 2
+	stored = 3
+	unknown = 4
+}
+
+class Imports extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[1] from
+}
+
+class Package extends org.eclipse.gmt.modisco.omg.KDM.code.Module {
+}
+
+class ParameterTo extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement[1] from
+}
+
+class TemplateType extends org.eclipse.gmt.modisco.omg.KDM.code.Datatype {
+}
+
+class PreprocessorDirective extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement {
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement[] codeElement
+}
+
+class MacroDirective extends org.eclipse.gmt.modisco.omg.KDM.code.PreprocessorDirective {
+}
+
+class MacroUnit extends org.eclipse.gmt.modisco.omg.KDM.code.PreprocessorDirective {
+	org.eclipse.gmt.modisco.omg.KDM.code.MacroKind kind
+}
+
+class ConditionalDirective extends org.eclipse.gmt.modisco.omg.KDM.code.PreprocessorDirective {
+}
+
+class IncludeDirective extends org.eclipse.gmt.modisco.omg.KDM.code.PreprocessorDirective {
+}
+
+enum MacroKind {
+	regular
+	option = 1
+	undefined = 2
+	external = 3
+	unknown = 4
+}
+
+class VariantTo extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.PreprocessorDirective[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.PreprocessorDirective[1] from
+}
+
+class Expands extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.PreprocessorDirective[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.PreprocessorDirective[1] from
+}
+
+class Redefines extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.PreprocessorDirective[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.PreprocessorDirective[1] from
+}
+
+class GeneratedFrom extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.PreprocessorDirective[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement[1] from
+}
+
+class Includes extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.PreprocessorDirective[1] from
+}
+
+class HasValue extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[1] from
+}

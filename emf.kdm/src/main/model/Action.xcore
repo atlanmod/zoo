@@ -1,0 +1,121 @@
+@Ecore(nsURI="http://schema.omg.org/spec/KDM/1.2/action")
+@GenModel(copyrightText="\r\nCopyright (c) 2009 Hatha Systems.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Nikolai Mansourov (Hatha Systems) - initial API and implementation\r\n    Gabriel Barbier (Mia-Software) - minor evolutions for version 1.1",
+	modelDirectory="/org.eclipse.gmt.modisco.omg.kdm/src", modelPluginID="org.eclipse.gmt.modisco.omg.kdm",
+	modelName="Kdm", nonNLSMarkers="true", importerID="org.eclipse.emf.importer.ecore")
+package org.eclipse.gmt.modisco.omg.KDM.action
+
+import org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement
+import org.eclipse.gmt.modisco.omg.KDM.code.CodeItem
+import org.eclipse.gmt.modisco.omg.KDM.code.ComputationalObject
+import org.eclipse.gmt.modisco.omg.KDM.code.ControlElement
+import org.eclipse.gmt.modisco.omg.KDM.code.DataElement
+import org.eclipse.gmt.modisco.omg.KDM.code.Datatype
+import org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity
+import org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship
+import org.eclipse.gmt.modisco.omg.KDM.core.String
+
+class ActionElement extends org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement {
+	org.eclipse.gmt.modisco.omg.KDM.core.String kind
+	contains unordered org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement[] codeElement
+	contains org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship[] actionRelation
+}
+
+interface AbstractActionRelationship extends org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship {
+}
+
+class ControlFlow extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class Calls extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.ControlElement[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class Creates extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.Datatype[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class Reads extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.DataElement[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class Writes extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.DataElement[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class CompliesTo extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.CodeItem[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class Flow extends org.eclipse.gmt.modisco.omg.KDM.action.ControlFlow {
+}
+
+class TrueFlow extends org.eclipse.gmt.modisco.omg.KDM.action.ControlFlow {
+}
+
+class FalseFlow extends org.eclipse.gmt.modisco.omg.KDM.action.ControlFlow {
+}
+
+class GuardedFlow extends org.eclipse.gmt.modisco.omg.KDM.action.ControlFlow {
+}
+
+class UsesType extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.Datatype[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class Addresses extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.ComputationalObject[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class ActionRelationship extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class Throws extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.DataElement[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class Dispatches extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.DataElement[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class EntryFlow extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.code.AbstractCodeElement[1] from
+}
+
+class BlockUnit extends org.eclipse.gmt.modisco.omg.KDM.action.ActionElement {
+}
+
+class ExceptionUnit extends org.eclipse.gmt.modisco.omg.KDM.action.BlockUnit {
+}
+
+class TryUnit extends org.eclipse.gmt.modisco.omg.KDM.action.ExceptionUnit {
+}
+
+class FinallyUnit extends org.eclipse.gmt.modisco.omg.KDM.action.ExceptionUnit {
+}
+
+class CatchUnit extends org.eclipse.gmt.modisco.omg.KDM.action.ExceptionUnit {
+}
+
+class ExitFlow extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
+
+class ExceptionFlow extends org.eclipse.gmt.modisco.omg.KDM.action.AbstractActionRelationship {
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] to
+	refers unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[1] from
+}
