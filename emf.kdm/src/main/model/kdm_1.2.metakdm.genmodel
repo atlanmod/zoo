@@ -1,0 +1,1069 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="&#xD;&#xA;Copyright (c) 2009 Hatha Systems.&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;    Nikolai Mansourov (Hatha Systems) - initial API and implementation&#xD;&#xA;    Gabriel Barbier (Mia-Software) - minor evolutions for version 1.1"
+    modelDirectory="/org.eclipse.gmt.modisco.omg.kdm/src" modelPluginID="org.eclipse.gmt.modisco.omg.kdm"
+    modelName="Kdm" nonNLSMarkers="true" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>kdm_1.2.metakdm.ecore</foreignModel>
+  <genPackages prefix="Kdm" basePackage="org.eclipse.gmt.modisco.omg" disposableProviderFactory="true"
+      ecorePackage="kdm_1.2.metakdm.ecore#/">
+    <nestedGenPackages prefix="Action" disposableProviderFactory="true" ecorePackage="kdm_1.2.metakdm.ecore#//action">
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/ActionElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//action/ActionElement/kind"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/ActionElement/codeElement"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/ActionElement/actionRelation"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//action/AbstractActionRelationship"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/ControlFlow">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/ControlFlow/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/ControlFlow/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/Calls">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/Calls/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/Calls/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/Creates">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/Creates/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/Creates/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/Reads">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/Reads/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/Reads/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/Writes">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/Writes/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/Writes/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/CompliesTo">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/CompliesTo/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/CompliesTo/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/Flow"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/TrueFlow"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/FalseFlow"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/GuardedFlow"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/UsesType">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/UsesType/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/UsesType/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/Addresses">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/Addresses/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/Addresses/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/ActionRelationship">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/ActionRelationship/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/ActionRelationship/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/Throws">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/Throws/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/Throws/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/Dispatches">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/Dispatches/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/Dispatches/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/EntryFlow">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/EntryFlow/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/EntryFlow/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/BlockUnit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/ExceptionUnit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/TryUnit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/FinallyUnit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/CatchUnit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/ExitFlow">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/ExitFlow/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/ExitFlow/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//action/ExceptionFlow">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/ExceptionFlow/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//action/ExceptionFlow/from"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Build" disposableProviderFactory="true" ecorePackage="kdm_1.2.metakdm.ecore#//build">
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//build/AbstractBuildElement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/AbstractBuildElement/buildRelation"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/BuildResource">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/BuildResource/source"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/BuildResource/implementation"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/BuildResource/groupedBuild"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/BuildResource/buildElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/BuildDescription">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//build/BuildDescription/text"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/SymbolicLink"/>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//build/AbstractBuildRelationship"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/LinksTo">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/LinksTo/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/LinksTo/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/Consumes">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/Consumes/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/Consumes/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/BuildModel">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/BuildModel/buildElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/BuildComponent"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/Supplier"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/Tool"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/BuildElement"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/BuildRelationship">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/BuildRelationship/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/BuildRelationship/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/SuppliedBy">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/SuppliedBy/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/SuppliedBy/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/Library"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/BuildStep"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/Produces">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/Produces/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/Produces/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/SupportedBy">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/SupportedBy/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/SupportedBy/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/BuildProduct"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//build/DescribedBy">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/DescribedBy/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//build/DescribedBy/from"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Code" disposableProviderFactory="true" ecorePackage="kdm_1.2.metakdm.ecore#//code">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="kdm_1.2.metakdm.ecore#//code/MethodKind">
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/MethodKind/method"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/MethodKind/constructor"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/MethodKind/destructor"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/MethodKind/operator"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/MethodKind/virtual"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/MethodKind/abstract"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/MethodKind/unknown"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="kdm_1.2.metakdm.ecore#//code/ParameterKind">
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/ParameterKind/byValue"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/ParameterKind/byName"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/ParameterKind/byReference"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/ParameterKind/variadic"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/ParameterKind/return"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/ParameterKind/throws"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/ParameterKind/exception"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/ParameterKind/catchall"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/ParameterKind/unknown"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="kdm_1.2.metakdm.ecore#//code/ExportKind">
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/ExportKind/public"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/ExportKind/private"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/ExportKind/protected"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/ExportKind/final"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/ExportKind/unknown"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="kdm_1.2.metakdm.ecore#//code/StorableKind">
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/StorableKind/global"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/StorableKind/local"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/StorableKind/static"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/StorableKind/external"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/StorableKind/register"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/StorableKind/unknown"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="kdm_1.2.metakdm.ecore#//code/CallableKind">
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/CallableKind/external"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/CallableKind/regular"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/CallableKind/operator"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/CallableKind/stored"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/CallableKind/unknown"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="kdm_1.2.metakdm.ecore#//code/MacroKind">
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/MacroKind/regular"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/MacroKind/option"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/MacroKind/undefined"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/MacroKind/external"/>
+        <genEnumLiterals ecoreEnumLiteral="kdm_1.2.metakdm.ecore#//code/MacroKind/unknown"/>
+      </genEnums>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//code/AbstractCodeElement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/AbstractCodeElement/source"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/AbstractCodeElement/comment"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/AbstractCodeElement/entryFlow"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/AbstractCodeElement/codeRelation"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//code/CodeItem"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/ComputationalObject"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/ControlElement">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/ControlElement/type"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/ControlElement/codeElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/MethodUnit">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/MethodUnit/kind"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/MethodUnit/export"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/Module">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/Module/codeElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/CodeAssembly"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/CallableUnit">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/CallableUnit/kind"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/Datatype"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/TemplateUnit">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/TemplateUnit/codeElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/TemplateParameter"/>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//code/AbstractCodeRelationship"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/InstanceOf">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/InstanceOf/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/InstanceOf/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/CompilationUnit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/CodeModel">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/CodeModel/codeElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/DerivedType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/DerivedType/itemUnit"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/ArrayType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/ArrayType/size"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/ArrayType/indexUnit"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/PrimitiveType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/BooleanType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/CharType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/ClassUnit">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/ClassUnit/isAbstract"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/ClassUnit/codeElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/CompositeType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/CompositeType/itemUnit"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/RecordType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/EnumeratedType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/EnumeratedType/value"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/Extends">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/Extends/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/Extends/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/ScaledType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/FloatType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/HasType">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/HasType/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/HasType/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/ImplementationOf">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/ImplementationOf/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/ImplementationOf/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/Implements">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/Implements/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/Implements/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/IntegerType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/InterfaceUnit">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/InterfaceUnit/codeElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/PointerType"/>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//code/DefinedType">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/DefinedType/type"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/DefinedType/codeElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/TypeUnit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/RangeType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/RangeType/lower"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/RangeType/upper"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/Signature">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/Signature/parameterUnit"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/DataElement">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/DataElement/type"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/DataElement/ext"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/DataElement/size"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/DataElement/codeElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/StringType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/ChoiceType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/NamespaceUnit">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/NamespaceUnit/groupedCode"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/VisibleIn">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/VisibleIn/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/VisibleIn/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/CommentUnit">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/CommentUnit/text"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/SharedUnit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/DecimalType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/DateType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/TimeType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/VoidType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/ValueElement"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/Value"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/ValueList">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/ValueList/valueElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/StorableUnit">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/StorableUnit/kind"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/MemberUnit">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/MemberUnit/export"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/ParameterUnit">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/ParameterUnit/kind"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/ParameterUnit/pos"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/ItemUnit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/IndexUnit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/SynonymType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/SequenceType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/SequenceType/size"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/BagType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/BagType/size"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/SetType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/SetType/size"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/CodeElement"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/CodeRelationship">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/CodeRelationship/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/CodeRelationship/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/LanguageUnit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/OrdinalType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/BitstringType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/OctetType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/OctetstringType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/BitType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/Imports">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/Imports/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/Imports/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/Package"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/ParameterTo">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/ParameterTo/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/ParameterTo/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/TemplateType"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/PreprocessorDirective">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/PreprocessorDirective/codeElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/MacroDirective"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/MacroUnit">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//code/MacroUnit/kind"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/ConditionalDirective"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/IncludeDirective"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/VariantTo">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/VariantTo/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/VariantTo/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/Expands">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/Expands/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/Expands/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/Redefines">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/Redefines/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/Redefines/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/GeneratedFrom">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/GeneratedFrom/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/GeneratedFrom/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/Includes">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/Includes/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/Includes/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//code/HasValue">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/HasValue/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//code/HasValue/from"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Conceptual" disposableProviderFactory="true" ecorePackage="kdm_1.2.metakdm.ecore#//conceptual">
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//conceptual/ConceptualModel">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//conceptual/ConceptualModel/conceptualElement"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//conceptual/AbstractConceptualElement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//conceptual/AbstractConceptualElement/source"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//conceptual/AbstractConceptualElement/implementation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//conceptual/AbstractConceptualElement/conceptualRelation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//conceptual/AbstractConceptualElement/abstraction"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//conceptual/TermUnit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//conceptual/ConceptualContainer">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//conceptual/ConceptualContainer/conceptualElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//conceptual/FactUnit"/>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//conceptual/AbstractConceptualRelationship"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//conceptual/ConceptualRelationship">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//conceptual/ConceptualRelationship/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//conceptual/ConceptualRelationship/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//conceptual/BehaviorUnit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//conceptual/RuleUnit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//conceptual/ScenarioUnit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//conceptual/ConceptualFlow">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//conceptual/ConceptualFlow/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//conceptual/ConceptualFlow/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//conceptual/ConceptualElement"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//conceptual/ConceptualRole">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//conceptual/ConceptualRole/conceptualElement"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Core" disposableProviderFactory="true" ecorePackage="kdm_1.2.metakdm.ecore#//core">
+      <genDataTypes ecoreDataType="kdm_1.2.metakdm.ecore#//core/String"/>
+      <genDataTypes ecoreDataType="kdm_1.2.metakdm.ecore#//core/Integer"/>
+      <genDataTypes ecoreDataType="kdm_1.2.metakdm.ecore#//core/Boolean"/>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//core/Element">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//core/Element/attribute"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//core/Element/annotation"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//core/ModelElement">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//core/ModelElement/stereotype"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//core/ModelElement/taggedValue"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//core/KDMEntity">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//core/KDMEntity/name"/>
+        <genOperations ecoreOperation="kdm_1.2.metakdm.ecore#//core/KDMEntity/createAggregation">
+          <genParameters ecoreParameter="kdm_1.2.metakdm.ecore#//core/KDMEntity/createAggregation/otherEntity"/>
+        </genOperations>
+        <genOperations ecoreOperation="kdm_1.2.metakdm.ecore#//core/KDMEntity/deleteAggregation">
+          <genParameters ecoreParameter="kdm_1.2.metakdm.ecore#//core/KDMEntity/deleteAggregation/aggregation"/>
+        </genOperations>
+        <genOperations ecoreOperation="kdm_1.2.metakdm.ecore#//core/KDMEntity/getInbound"/>
+        <genOperations ecoreOperation="kdm_1.2.metakdm.ecore#//core/KDMEntity/getOutbound"/>
+        <genOperations ecoreOperation="kdm_1.2.metakdm.ecore#//core/KDMEntity/getOwnedRelation"/>
+        <genOperations ecoreOperation="kdm_1.2.metakdm.ecore#//core/KDMEntity/getInAggregated"/>
+        <genOperations ecoreOperation="kdm_1.2.metakdm.ecore#//core/KDMEntity/getOutAggregated"/>
+        <genOperations ecoreOperation="kdm_1.2.metakdm.ecore#//core/KDMEntity/getOwner"/>
+        <genOperations ecoreOperation="kdm_1.2.metakdm.ecore#//core/KDMEntity/getOwnedElement"/>
+        <genOperations ecoreOperation="kdm_1.2.metakdm.ecore#//core/KDMEntity/getGroup"/>
+        <genOperations ecoreOperation="kdm_1.2.metakdm.ecore#//core/KDMEntity/getGroupedElement"/>
+        <genOperations ecoreOperation="kdm_1.2.metakdm.ecore#//core/KDMEntity/getModel"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//core/KDMRelationship">
+        <genOperations ecoreOperation="kdm_1.2.metakdm.ecore#//core/KDMRelationship/getTo"/>
+        <genOperations ecoreOperation="kdm_1.2.metakdm.ecore#//core/KDMRelationship/getFrom"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//core/AggregatedRelationship">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//core/AggregatedRelationship/from"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//core/AggregatedRelationship/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//core/AggregatedRelationship/relation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//core/AggregatedRelationship/density"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Data" disposableProviderFactory="true" ecorePackage="kdm_1.2.metakdm.ecore#//data">
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/DataModel">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/DataModel/dataElement"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//data/AbstractDataElement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/AbstractDataElement/source"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/AbstractDataElement/dataRelation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/AbstractDataElement/abstraction"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/DataResource"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/IndexElement">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/IndexElement/implementation"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/UniqueKey"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/Index"/>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//data/AbstractDataRelationship"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/KeyRelation">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/KeyRelation/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/KeyRelation/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/ReferenceKey"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/DataContainer">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/DataContainer/dataElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/Catalog"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/RelationalSchema">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/RelationalSchema/codeElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/ColumnSet">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/ColumnSet/itemUnit"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/RelationalTable"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/RelationalView"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/RecordFile"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/DataEvent">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//data/DataEvent/kind"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/XMLSchema">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/XMLSchema/contentElement"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//data/AbstractContentElement"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/ComplexContentType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/ComplexContentType/contentElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/AllContent"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/SeqContent"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/ChoiceContent"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/ContentItem">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/ContentItem/type"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/ContentItem/contentElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/GroupContent"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/ContentRestriction">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//data/ContentRestriction/kind"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//data/ContentRestriction/value"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/SimpleContentType">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/SimpleContentType/type"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//data/SimpleContentType/kind"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/ExtendedDataElement"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/DataRelationship">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/DataRelationship/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/DataRelationship/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/MixedContent"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/ContentReference"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/DataAction">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//data/DataAction/kind"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/DataAction/implementation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/DataAction/dataElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/ReadsColumnSet">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/ReadsColumnSet/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/ReadsColumnSet/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/ContentAttribute"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/TypedBy">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/TypedBy/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/TypedBy/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/ReferenceTo">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/ReferenceTo/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/ReferenceTo/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/RestrictionOf">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/RestrictionOf/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/RestrictionOf/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/ExtensionTo">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/ExtensionTo/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/ExtensionTo/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/DatatypeOf">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/DatatypeOf/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/DatatypeOf/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/HasContent">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/HasContent/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/HasContent/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/WritesColumnSet">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/WritesColumnSet/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/WritesColumnSet/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/ProducesDataEvent">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/ProducesDataEvent/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/ProducesDataEvent/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/DataSegment"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/ContentElement"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//data/ManagesData">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/ManagesData/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//data/ManagesData/from"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Event" disposableProviderFactory="true" ecorePackage="kdm_1.2.metakdm.ecore#//event">
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/EventModel">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/EventModel/eventElement"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//event/AbstractEventElement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/AbstractEventElement/source"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/AbstractEventElement/eventRelation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/AbstractEventElement/abstraction"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/AbstractEventElement/implementation"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/Event">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//event/Event/kind"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//event/AbstractEventRelationship"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/EventRelationship">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/EventRelationship/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/EventRelationship/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/EventResource">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/EventResource/eventElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/State"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/Transition"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/OnEntry"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/OnExit"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/EventAction">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//event/EventAction/kind"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/EventAction/eventElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/ReadsState">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/ReadsState/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/ReadsState/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/ProducesEvent">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/ProducesEvent/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/ProducesEvent/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/ConsumesEvent">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/ConsumesEvent/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/ConsumesEvent/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/NextState">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/NextState/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/NextState/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/InitialState"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/EventElement"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//event/HasState">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/HasState/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//event/HasState/from"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Source" disposableProviderFactory="true" ecorePackage="kdm_1.2.metakdm.ecore#//source">
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/SourceRef">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//source/SourceRef/region"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//source/SourceRef/language"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//source/SourceRef/snippet"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/SourceRegion">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//source/SourceRegion/file"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//source/SourceRegion/startLine"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//source/SourceRegion/startPosition"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//source/SourceRegion/endLine"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//source/SourceRegion/endPosition"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//source/SourceRegion/language"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//source/SourceRegion/path"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/InventoryModel">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//source/InventoryModel/inventoryElement"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//source/AbstractInventoryElement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//source/AbstractInventoryElement/inventoryRelation"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/InventoryItem">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//source/InventoryItem/version"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//source/InventoryItem/path"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/SourceFile">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//source/SourceFile/language"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//source/SourceFile/encoding"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/Image"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/ResourceDescription"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/Configuration"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/InventoryContainer">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//source/InventoryContainer/inventoryElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/Directory">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//source/Directory/path"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/Project"/>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//source/AbstractInventoryRelationship"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/BinaryFile"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/ExecutableFile"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/DependsOn">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//source/DependsOn/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//source/DependsOn/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/InventoryElement"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//source/InventoryRelationship">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//source/InventoryRelationship/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//source/InventoryRelationship/from"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Platform" disposableProviderFactory="true" ecorePackage="kdm_1.2.metakdm.ecore#//platform">
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//platform/AbstractPlatformElement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/AbstractPlatformElement/source"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/AbstractPlatformElement/relation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/AbstractPlatformElement/abstraction"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/AbstractPlatformElement/implementation"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/PlatformModel">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/PlatformModel/platformElement"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//platform/AbstractPlatformRelationship"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/Requires">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/Requires/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/Requires/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/ResourceType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/ResourceType/platformElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/NamingResource"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/MarshalledResource"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/MessagingResource"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/FileResource"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/ExecutionResource"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/PlatformAction">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//platform/PlatformAction/kind"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/PlatformAction/platformElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/ExternalActor"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/DataManager"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/BindsTo">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/BindsTo/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/BindsTo/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/PlatformElement"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/PlatformRelationship">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/PlatformRelationship/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/PlatformRelationship/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/PlatformEvent">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//platform/PlatformEvent/kind"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/LockResource"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/DeployedSoftwareSystem">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/DeployedSoftwareSystem/groupedComponent"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/Machine">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/Machine/deployedComponent"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/Machine/deployedResource"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/DeployedComponent">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/DeployedComponent/groupedCode"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/DeployedResource">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/DeployedResource/platformElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/Loads">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/Loads/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/Loads/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/Spawns">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/Spawns/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/Spawns/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/RuntimeResource"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/Thread"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/Process"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/ReadsResource">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/ReadsResource/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/ReadsResource/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/WritesResource">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/WritesResource/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/WritesResource/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/ManagesResource">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/ManagesResource/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/ManagesResource/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/DefinedBy">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/DefinedBy/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//platform/DefinedBy/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//platform/StreamResource"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Structure" disposableProviderFactory="true" ecorePackage="kdm_1.2.metakdm.ecore#//structure">
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//structure/AbstractStructureElement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//structure/AbstractStructureElement/aggregated"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//structure/AbstractStructureElement/implementation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//structure/AbstractStructureElement/structureElement"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//structure/AbstractStructureElement/structureRelationship"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//structure/Subsystem"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//structure/Layer"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//structure/StructureModel">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//structure/StructureModel/structureElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//structure/Component"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//structure/SoftwareSystem"/>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//structure/AbstractStructureRelationship"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//structure/StructureRelationship">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//structure/StructureRelationship/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//structure/StructureRelationship/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//structure/ArchitectureView"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//structure/StructureElement"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Kdm" disposableProviderFactory="true" ecorePackage="kdm_1.2.metakdm.ecore#//kdm">
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//kdm/KDMFramework">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//kdm/KDMFramework/audit"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//kdm/KDMFramework/extensionFamily"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//kdm/KDMFramework/name"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//kdm/KDMModel"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//kdm/Audit">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//kdm/Audit/description"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//kdm/Audit/author"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//kdm/Audit/date"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//kdm/Segment">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//kdm/Segment/segment"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//kdm/Segment/model"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//kdm/Attribute">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//kdm/Attribute/tag"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//kdm/Attribute/value"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//kdm/Annotation">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//kdm/Annotation/text"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//kdm/TagDefinition">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//kdm/TagDefinition/tag"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//kdm/TagDefinition/type"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//kdm/ExtendedValue">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//kdm/ExtendedValue/tag"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//kdm/Stereotype">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//kdm/Stereotype/tag"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//kdm/Stereotype/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//kdm/Stereotype/type"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//kdm/ExtensionFamily">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//kdm/ExtensionFamily/stereotype"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//kdm/ExtensionFamily/name"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//kdm/TaggedRef">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//kdm/TaggedRef/reference"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//kdm/TaggedValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//kdm/TaggedValue/value"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Ui" disposableProviderFactory="true" ecorePackage="kdm_1.2.metakdm.ecore#//ui">
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//ui/AbstractUIElement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/AbstractUIElement/source"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/AbstractUIElement/UIRelation"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/AbstractUIElement/implementation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/AbstractUIElement/abstraction"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/UIResource">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/UIResource/UIElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/UIDisplay"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/Screen"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/Report"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/UIModel">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/UIModel/UIElement"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="kdm_1.2.metakdm.ecore#//ui/AbstractUIRelationship"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/UILayout">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/UILayout/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/UILayout/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/UIField"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/DisplaysImage">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/DisplaysImage/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/DisplaysImage/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/Displays">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/Displays/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/Displays/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/UIFlow">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/UIFlow/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/UIFlow/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/UIElement"/>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/UIRelationship">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/UIRelationship/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/UIRelationship/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/UIAction">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//ui/UIAction/kind"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/UIAction/UIElement"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/UIEvent">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute kdm_1.2.metakdm.ecore#//ui/UIEvent/kind"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/ReadsUI">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/ReadsUI/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/ReadsUI/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/WritesUI">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/WritesUI/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/WritesUI/from"/>
+      </genClasses>
+      <genClasses ecoreClass="kdm_1.2.metakdm.ecore#//ui/ManagesUI">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/ManagesUI/to"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference kdm_1.2.metakdm.ecore#//ui/ManagesUI/from"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>
