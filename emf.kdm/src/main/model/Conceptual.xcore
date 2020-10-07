@@ -1,61 +1,64 @@
 @Ecore(nsURI="http://schema.omg.org/spec/KDM/1.2/conceptual")
 @GenModel(copyrightText="\r\nCopyright (c) 2009 Hatha Systems.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Nikolai Mansourov (Hatha Systems) - initial API and implementation\r\n    Gabriel Barbier (Mia-Software) - minor evolutions for version 1.1",
 	modelDirectory="/emf.kdm/src/main/java-gen",
-	modelName="Kdm", nonNLSMarkers="true", importerID="org.eclipse.emf.importer.ecore")
-package org.eclipse.gmt.modisco.omg.KDM.conceptual
+	modelName="kdm", 
+	nonNLSMarkers="true", 
+	importerID="org.eclipse.emf.importer.ecore")
+	
+package org.eclipse.gmt.modisco.omg.kdm.conceptual
 
-import org.eclipse.gmt.modisco.omg.KDM.action.ActionElement
-import org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity
-import org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship
-import org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel
-import org.eclipse.gmt.modisco.omg.KDM.source.SourceRef
+import org.eclipse.gmt.modisco.omg.kdm.action.ActionElement
+import org.eclipse.gmt.modisco.omg.kdm.core.KDMEntity
+import org.eclipse.gmt.modisco.omg.kdm.core.KDMRelationship
+import org.eclipse.gmt.modisco.omg.kdm.kdm.KDMModel
+import org.eclipse.gmt.modisco.omg.kdm.source.SourceRef
 
-class ConceptualModel extends org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel {
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.conceptual.AbstractConceptualElement[] conceptualElement
+class ConceptualModel extends KDMModel {
+	contains unordered AbstractConceptualElement[] conceptualElement
 }
 
-interface AbstractConceptualElement extends org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity {
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.source.SourceRef[] source
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[] implementation
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.conceptual.AbstractConceptualRelationship[] conceptualRelation
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.action.ActionElement[] abstraction
+interface AbstractConceptualElement extends KDMEntity {
+	contains unordered SourceRef[] source
+	refers unordered KDMEntity[] implementation
+	contains unordered AbstractConceptualRelationship[] conceptualRelation
+	contains unordered ActionElement[] abstraction
 }
 
-class TermUnit extends org.eclipse.gmt.modisco.omg.KDM.conceptual.AbstractConceptualElement {
+class TermUnit extends AbstractConceptualElement {
 }
 
-class ConceptualContainer extends org.eclipse.gmt.modisco.omg.KDM.conceptual.AbstractConceptualElement {
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.conceptual.AbstractConceptualElement[] conceptualElement
+class ConceptualContainer extends AbstractConceptualElement {
+	contains unordered AbstractConceptualElement[] conceptualElement
 }
 
-class FactUnit extends org.eclipse.gmt.modisco.omg.KDM.conceptual.ConceptualContainer {
+class FactUnit extends ConceptualContainer {
 }
 
-interface AbstractConceptualRelationship extends org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship {
+interface AbstractConceptualRelationship extends KDMRelationship {
 }
 
-class ConceptualRelationship extends org.eclipse.gmt.modisco.omg.KDM.conceptual.AbstractConceptualRelationship {
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[1] to
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.conceptual.AbstractConceptualElement[1] from
+class ConceptualRelationship extends AbstractConceptualRelationship {
+	refers unordered KDMEntity[1] to
+	refers unordered AbstractConceptualElement[1] from
 }
 
-class BehaviorUnit extends org.eclipse.gmt.modisco.omg.KDM.conceptual.ConceptualContainer {
+class BehaviorUnit extends ConceptualContainer {
 }
 
-class RuleUnit extends org.eclipse.gmt.modisco.omg.KDM.conceptual.ConceptualContainer {
+class RuleUnit extends ConceptualContainer {
 }
 
-class ScenarioUnit extends org.eclipse.gmt.modisco.omg.KDM.conceptual.ConceptualContainer {
+class ScenarioUnit extends ConceptualContainer {
 }
 
-class ConceptualFlow extends org.eclipse.gmt.modisco.omg.KDM.conceptual.AbstractConceptualRelationship {
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.conceptual.ConceptualContainer[1] to
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.conceptual.ConceptualContainer[1] from
+class ConceptualFlow extends AbstractConceptualRelationship {
+	refers unordered ConceptualContainer[1] to
+	refers unordered ConceptualContainer[1] from
 }
 
-class ConceptualElement extends org.eclipse.gmt.modisco.omg.KDM.conceptual.AbstractConceptualElement {
+class ConceptualElement extends AbstractConceptualElement {
 }
 
-class ConceptualRole extends org.eclipse.gmt.modisco.omg.KDM.conceptual.AbstractConceptualElement {
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.conceptual.AbstractConceptualElement[1] conceptualElement
+class ConceptualRole extends AbstractConceptualElement {
+	refers unordered AbstractConceptualElement[1] conceptualElement
 }

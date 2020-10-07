@@ -1,68 +1,68 @@
 @Ecore(nsURI="http://schema.omg.org/spec/KDM/1.2/kdm")
 @GenModel(copyrightText="\r\nCopyright (c) 2009 Hatha Systems.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Nikolai Mansourov (Hatha Systems) - initial API and implementation\r\n    Gabriel Barbier (Mia-Software) - minor evolutions for version 1.1",
 	modelDirectory="/emf.kdm/src/main/java-gen",
-	modelName="Kdm",
+	modelName="kdm",
 	nonNLSMarkers="true",
 	importerID="org.eclipse.emf.importer.ecore")
-package org.eclipse.gmt.modisco.omg.KDM.kdm
+	
+package org.eclipse.gmt.modisco.omg.kdm.kdm
 
-import org.eclipse.gmt.modisco.omg.KDM.core.Element
-import org.eclipse.gmt.modisco.omg.KDM.core.ModelElement
-import org.eclipse.gmt.modisco.omg.KDM.core.String
+import org.eclipse.gmt.modisco.omg.kdm.core.Element
+import org.eclipse.gmt.modisco.omg.kdm.core.ModelElement
 
-interface KDMFramework extends org.eclipse.gmt.modisco.omg.KDM.core.ModelElement {
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.kdm.Audit[] audit
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.kdm.ExtensionFamily[] extensionFamily
-	org.eclipse.gmt.modisco.omg.KDM.core.String name
+interface KDMFramework extends ModelElement {
+	contains unordered Audit[] audit
+	contains unordered ExtensionFamily[] extensionFamily
+	org.eclipse.gmt.modisco.omg.kdm.core.String name
 }
 
 interface KDMModel extends org.eclipse.gmt.modisco.omg.KDM.kdm.KDMFramework {
 }
 
-class Audit extends org.eclipse.gmt.modisco.omg.KDM.core.Element {
-	org.eclipse.gmt.modisco.omg.KDM.core.String description
-	org.eclipse.gmt.modisco.omg.KDM.core.String author
-	org.eclipse.gmt.modisco.omg.KDM.core.String date
+class Audit extends Element {
+	org.eclipse.gmt.modisco.omg.kdm.core.String description
+	org.eclipse.gmt.modisco.omg.kdm.core.String author
+	org.eclipse.gmt.modisco.omg.kdm.core.String date
 }
 
-class Segment extends org.eclipse.gmt.modisco.omg.KDM.kdm.KDMFramework {
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.kdm.Segment[] segment
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel[] model
+class Segment extends KDMFramework {
+	contains unordered Segment[] segment
+	contains unordered KDMModel[] model
 }
 
-class Attribute extends org.eclipse.gmt.modisco.omg.KDM.core.Element {
-	org.eclipse.gmt.modisco.omg.KDM.core.String tag
-	org.eclipse.gmt.modisco.omg.KDM.core.String value
+class Attribute extends Element {
+	org.eclipse.gmt.modisco.omg.kdm.core.String tag
+	org.eclipse.gmt.modisco.omg.kdm.core.String value
 }
 
-class Annotation extends org.eclipse.gmt.modisco.omg.KDM.core.Element {
-	org.eclipse.gmt.modisco.omg.KDM.core.String text
+class Annotation extends Element {
+	org.eclipse.gmt.modisco.omg.kdm.core.String text
 }
 
-class TagDefinition extends org.eclipse.gmt.modisco.omg.KDM.core.Element {
-	org.eclipse.gmt.modisco.omg.KDM.core.String tag
-	org.eclipse.gmt.modisco.omg.KDM.core.String ^type
+class TagDefinition extends Element {
+	org.eclipse.gmt.modisco.omg.kdm.core.String tag
+	org.eclipse.gmt.modisco.omg.kdm.core.String ^type
 }
 
-interface ExtendedValue extends org.eclipse.gmt.modisco.omg.KDM.core.Element {
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.kdm.TagDefinition[1] tag
+interface ExtendedValue extends Element {
+	refers unordered TagDefinition[1] tag
 }
 
-class Stereotype extends org.eclipse.gmt.modisco.omg.KDM.core.Element {
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.kdm.TagDefinition[] tag
-	org.eclipse.gmt.modisco.omg.KDM.core.String name
-	org.eclipse.gmt.modisco.omg.KDM.core.String ^type
+class Stereotype extends Element {
+	contains unordered TagDefinition[] tag
+	org.eclipse.gmt.modisco.omg.kdm.core.String name
+	org.eclipse.gmt.modisco.omg.kdm.core.String ^type
 }
 
-class ExtensionFamily extends org.eclipse.gmt.modisco.omg.KDM.core.Element {
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.kdm.Stereotype[] stereotype
-	org.eclipse.gmt.modisco.omg.KDM.core.String name
+class ExtensionFamily extends Element {
+	contains unordered Stereotype[] stereotype
+	org.eclipse.gmt.modisco.omg.kdm.core.String name
 }
 
-class TaggedRef extends org.eclipse.gmt.modisco.omg.KDM.kdm.ExtendedValue {
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.core.ModelElement[1] reference
+class TaggedRef extends ExtendedValue {
+	refers unordered ModelElement[1] reference
 }
 
-class TaggedValue extends org.eclipse.gmt.modisco.omg.KDM.kdm.ExtendedValue {
-	org.eclipse.gmt.modisco.omg.KDM.core.String value
+class TaggedValue extends ExtendedValue {
+	org.eclipse.gmt.modisco.omg.kdm.core.String value
 }

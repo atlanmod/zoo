@@ -1,92 +1,94 @@
 @Ecore(nsURI="http://schema.omg.org/spec/KDM/1.2/build")
 @GenModel(copyrightText="\r\nCopyright (c) 2009 Hatha Systems.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Nikolai Mansourov (Hatha Systems) - initial API and implementation\r\n    Gabriel Barbier (Mia-Software) - minor evolutions for version 1.1",
 	modelDirectory="/emf.kdm/src/main/java-gen",
-	modelName="Kdm", nonNLSMarkers="true", importerID="org.eclipse.emf.importer.ecore")
-package org.eclipse.gmt.modisco.omg.KDM.build
+	modelName="kdm", nonNLSMarkers="true", 
+	importerID="org.eclipse.emf.importer.ecore")
+	
+package org.eclipse.gmt.modisco.omg.kdm.build
 
-import org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity
-import org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship
-import org.eclipse.gmt.modisco.omg.KDM.core.String
-import org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel
-import org.eclipse.gmt.modisco.omg.KDM.source.SourceRef
+import org.eclipse.gmt.modisco.omg.kdm.core.KDMEntity
+import org.eclipse.gmt.modisco.omg.kdm.core.KDMRelationship
+import org.eclipse.gmt.modisco.omg.kdm.core.String
+import org.eclipse.gmt.modisco.omg.kdm.kdm.KDMModel
+import org.eclipse.gmt.modisco.omg.kdm.source.SourceRef
 
-interface AbstractBuildElement extends org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity {
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildRelationship[] buildRelation
+interface AbstractBuildElement extends KDMEntity {
+	contains unordered AbstractBuildRelationship[] buildRelation
 }
 
-class BuildResource extends org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildElement {
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.source.SourceRef[] source
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[] implementation
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildElement[] groupedBuild
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildElement[] buildElement
+class BuildResource extends AbstractBuildElement {
+	contains unordered SourceRef[] source
+	refers unordered KDMEntity[] implementation
+	refers unordered AbstractBuildElement[] groupedBuild
+	contains unordered AbstractBuildElement[] buildElement
 }
 
-class BuildDescription extends org.eclipse.gmt.modisco.omg.KDM.build.BuildResource {
-	org.eclipse.gmt.modisco.omg.KDM.core.String text
+class BuildDescription extends BuildResource {
+	org.eclipse.gmt.modisco.omg.kdm.core.String text
 }
 
-class SymbolicLink extends org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildElement {
+class SymbolicLink extends AbstractBuildElement {
 }
 
-interface AbstractBuildRelationship extends org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship {
+interface AbstractBuildRelationship extends KDMRelationship {
 }
 
-class LinksTo extends org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildRelationship {
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildElement[1] to
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.build.SymbolicLink[1] from
+class LinksTo extends AbstractBuildRelationship {
+	refers unordered AbstractBuildElement[1] to
+	refers unordered SymbolicLink[1] from
 }
 
-class Consumes extends org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildRelationship {
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildElement[1] to
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.build.BuildStep[1] from
+class Consumes extends AbstractBuildRelationship {
+	refers unordered AbstractBuildElement[1] to
+	refers unordered BuildStep[1] from
 }
 
-class BuildModel extends org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel {
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildElement[] buildElement
+class BuildModel extends KDMModel {
+	contains unordered AbstractBuildElement[] buildElement
 }
 
-class BuildComponent extends org.eclipse.gmt.modisco.omg.KDM.build.BuildResource {
+class BuildComponent extends BuildResource {
 }
 
-class Supplier extends org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildElement {
+class Supplier extends AbstractBuildElement {
 }
 
-class Tool extends org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildElement {
+class Tool extends AbstractBuildElement {
 }
 
-class BuildElement extends org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildElement {
+class BuildElement extends AbstractBuildElement {
 }
 
-class BuildRelationship extends org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildRelationship {
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[1] to
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildElement[1] from
+class BuildRelationship extends AbstractBuildRelationship {
+	refers unordered KDMEntity[1] to
+	refers unordered AbstractBuildElement[1] from
 }
 
-class SuppliedBy extends org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildRelationship {
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.build.Supplier[1] to
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildElement[1] from
+class SuppliedBy extends AbstractBuildRelationship {
+	refers unordered Supplier[1] to
+	refers unordered AbstractBuildElement[1] from
 }
 
-class Library extends org.eclipse.gmt.modisco.omg.KDM.build.BuildResource {
+class Library extends BuildResource {
 }
 
-class BuildStep extends org.eclipse.gmt.modisco.omg.KDM.build.BuildResource {
+class BuildStep extends BuildResource {
 }
 
-class Produces extends org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildRelationship {
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildElement[1] to
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.build.BuildStep[1] from
+class Produces extends AbstractBuildRelationship {
+	refers unordered AbstractBuildElement[1] to
+	refers unordered BuildStep[1] from
 }
 
-class SupportedBy extends org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildRelationship {
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.build.Tool[1] to
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.build.BuildStep[1] from
+class SupportedBy extends AbstractBuildRelationship {
+	refers unordered Tool[1] to
+	refers unordered BuildStep[1] from
 }
 
-class BuildProduct extends org.eclipse.gmt.modisco.omg.KDM.build.BuildResource {
+class BuildProduct extends BuildResource {
 }
 
-class DescribedBy extends org.eclipse.gmt.modisco.omg.KDM.build.AbstractBuildRelationship {
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.build.BuildDescription[1] to
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.build.BuildStep[1] from
+class DescribedBy extends AbstractBuildRelationship {
+	refers unordered BuildDescription[1] to
+	refers unordered BuildStep[1] from
 }

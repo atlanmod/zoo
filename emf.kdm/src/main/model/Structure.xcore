@@ -1,47 +1,47 @@
 @Ecore(nsURI="http://schema.omg.org/spec/KDM/1.2/structure")
 @GenModel(copyrightText="\r\nCopyright (c) 2009 Hatha Systems.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Nikolai Mansourov (Hatha Systems) - initial API and implementation\r\n    Gabriel Barbier (Mia-Software) - minor evolutions for version 1.1",
 	modelDirectory="/emf.kdm/src/main/java-gen",
-	modelName="Kdm", nonNLSMarkers="true", importerID="org.eclipse.emf.importer.ecore")
-package org.eclipse.gmt.modisco.omg.KDM.structure
+	modelName="kdm", nonNLSMarkers="true", importerID="org.eclipse.emf.importer.ecore")
+package org.eclipse.gmt.modisco.omg.kdm.structure
 
-import org.eclipse.gmt.modisco.omg.KDM.core.AggregatedRelationship
-import org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity
-import org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship
-import org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel
+import org.eclipse.gmt.modisco.omg.kdm.core.AggregatedRelationship
+import org.eclipse.gmt.modisco.omg.kdm.core.KDMEntity
+import org.eclipse.gmt.modisco.omg.kdm.core.KDMRelationship
+import org.eclipse.gmt.modisco.omg.kdm.kdm.KDMModel
 
-interface AbstractStructureElement extends org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity {
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.core.AggregatedRelationship[] aggregated
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[] implementation
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.structure.AbstractStructureElement[] structureElement
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.structure.AbstractStructureRelationship[] structureRelationship
+interface AbstractStructureElement extends KDMEntity {
+	contains unordered AggregatedRelationship[] aggregated
+	refers unordered KDMEntity[] implementation
+	contains unordered AbstractStructureElement[] structureElement
+	contains unordered AbstractStructureRelationship[] structureRelationship
 }
 
-class Subsystem extends org.eclipse.gmt.modisco.omg.KDM.structure.AbstractStructureElement {
+class Subsystem extends AbstractStructureElement {
 }
 
-class Layer extends org.eclipse.gmt.modisco.omg.KDM.structure.AbstractStructureElement {
+class Layer extends AbstractStructureElement {
 }
 
-class StructureModel extends org.eclipse.gmt.modisco.omg.KDM.kdm.KDMModel {
-	contains unordered org.eclipse.gmt.modisco.omg.KDM.structure.AbstractStructureElement[] structureElement
+class StructureModel extends KDMModel {
+	contains unordered AbstractStructureElement[] structureElement
 }
 
-class Component extends org.eclipse.gmt.modisco.omg.KDM.structure.AbstractStructureElement {
+class Component extends AbstractStructureElement {
 }
 
-class SoftwareSystem extends org.eclipse.gmt.modisco.omg.KDM.structure.AbstractStructureElement {
+class SoftwareSystem extends AbstractStructureElement {
 }
 
-interface AbstractStructureRelationship extends org.eclipse.gmt.modisco.omg.KDM.core.KDMRelationship {
+interface AbstractStructureRelationship extends KDMRelationship {
 }
 
-class StructureRelationship extends org.eclipse.gmt.modisco.omg.KDM.structure.AbstractStructureRelationship {
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.core.KDMEntity[1] to
-	refers unordered org.eclipse.gmt.modisco.omg.KDM.structure.AbstractStructureElement[1] from
+class StructureRelationship extends AbstractStructureRelationship {
+	refers unordered KDMEntity[1] to
+	refers unordered AbstractStructureElement[1] from
 }
 
-class ArchitectureView extends org.eclipse.gmt.modisco.omg.KDM.structure.AbstractStructureElement {
+class ArchitectureView extends AbstractStructureElement {
 }
 
-class StructureElement extends org.eclipse.gmt.modisco.omg.KDM.structure.AbstractStructureElement {
+class StructureElement extends AbstractStructureElement {
 }
