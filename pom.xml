@@ -67,17 +67,14 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <jdk.version>11</jdk.version>
+        <maven.compiler.source>${jdk.version}</maven.compiler.source>
+        <maven.compiler.target>${jdk.version}</maven.compiler.target>
         <maven.compiler.fork>true</maven.compiler.fork>
-        <emf.version>2.21.0</emf.version>
-        <xcore.version>1.4.0</xcore.version>
         <generated-sources.location>${project.basedir}/src/main/java-gen/</generated-sources.location>
         <models.location>${project.basedir}/src/main/model/</models.location>
-        <xtext-version>2.23.0</xtext-version>
-        <ecore-xtext-version>1.5.0</ecore-xtext-version>
-        <ecore-xcore-version>1.15.0</ecore-xcore-version>
-        <ecore-xcore-lib-version>1.5.0</ecore-xcore-lib-version>
+        <xtext-version>2.25.0</xtext-version>
+        <unveiling-emf.version>2.24.0</unveiling-emf.version>
     </properties>
 
     <modules>
@@ -98,37 +95,43 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.eclipse.emf</groupId>
+                <groupId>org.atlanmod.unveiling</groupId>
                 <artifactId>org.eclipse.emf.common</artifactId>
-                <version>2.16.0</version>
+                <type>pom</type>
+                <version>${unveiling-emf.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.eclipse.emf</groupId>
+                <groupId>org.atlanmod.unveiling</groupId>
                 <artifactId>org.eclipse.emf.ecore</artifactId>
-                <version>${emf.version}</version>
+                <type>pom</type>
+                <version>${unveiling-emf.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.eclipse.emf</groupId>
-                <artifactId>org.eclipse.emf.ecore.xcore.lib</artifactId>
-                <version>1.4.0</version>
+                <groupId>org.atlanmod.unveiling</groupId>
+                <artifactId>org.eclipse.emf.ecore.xcore</artifactId>
+                <type>pom</type>
+                <version>${unveiling-emf.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
         <dependency>
-            <groupId>org.eclipse.emf</groupId>
+            <groupId>org.atlanmod.unveiling</groupId>
             <artifactId>org.eclipse.emf.common</artifactId>
+            <type>pom</type>
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.emf</groupId>
+            <groupId>org.atlanmod.unveiling</groupId>
             <artifactId>org.eclipse.emf.ecore</artifactId>
+            <type>pom</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.emf</groupId>
-            <artifactId>org.eclipse.emf.ecore.xcore.lib</artifactId>
+            <groupId>org.atlanmod.unveiling</groupId>
+            <artifactId>org.eclipse.emf.ecore.xcore</artifactId>
+            <type>pom</type>
             <scope>compile</scope>
         </dependency>
     </dependencies>
@@ -179,7 +182,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.0.0-M2</version>
+                    <version>3.0.0-M3</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -390,71 +393,18 @@
                         <root>${models.location}</root>
                     </sourceRoots>
                 </configuration>
+
                 <dependencies>
-                    <dependency>
-                        <groupId>org.eclipse.platform</groupId>
-                        <artifactId>org.eclipse.text</artifactId>
-                        <version>3.9.0</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.platform</groupId>
-                        <artifactId>org.eclipse.core.resources</artifactId>
-                        <version>3.13.500</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.xtext</groupId>
-                        <artifactId>org.eclipse.xtext.ecore</artifactId>
-                        <version>${xtext-version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.xtext</groupId>
-                        <artifactId>org.eclipse.xtext.generator</artifactId>
-                        <version>${xtext-version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.xtext</groupId>
-                        <artifactId>org.eclipse.xtext.builder.standalone</artifactId>
-                        <version>${xtext-version}</version>
-                    </dependency>
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
                         <artifactId>org.eclipse.emf.codegen.ecore.xtext</artifactId>
-                        <version>${ecore-xtext-version}</version>
+                        <version>1.5.0</version>
                     </dependency>
                     <dependency>
-                        <groupId>org.eclipse.emf</groupId>
-                        <artifactId>org.eclipse.emf.common</artifactId>
-                        <version>2.16.0</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.emf</groupId>
-                        <artifactId>org.eclipse.emf.ecore</artifactId>
-                        <version>${emf.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.emf</groupId>
-                        <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
-                        <version>2.16.0</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.emf</groupId>
-                        <artifactId>org.eclipse.emf.codegen</artifactId>
-                        <version>${emf.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.emf</groupId>
-                        <artifactId>org.eclipse.emf.codegen.ecore</artifactId>
-                        <version>${emf.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.emf</groupId>
+                        <groupId>org.atlanmod.unveiling</groupId>
                         <artifactId>org.eclipse.emf.ecore.xcore</artifactId>
-                        <version>${ecore-xcore-version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.emf</groupId>
-                        <artifactId>org.eclipse.emf.ecore.xcore.lib</artifactId>
-                        <version>${ecore-xcore-lib-version}</version>
+                        <version>${unveiling-emf.version}</version>
+                        <type>pom</type>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -579,6 +529,17 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-atlanmod</id>
+            <name>bintray</name>
+            <url>https://dl.bintray.com/atlanmod/unveiling</url>
+        </repository>
+    </repositories>
+
     <profiles>
         <!-- A profile to deploy artifacts on OSS Sonartype -->
         <profile>
@@ -634,8 +595,6 @@
                             </execution>
                         </executions>
                     </plugin>
-
-
                 </plugins>
             </build>
         </profile>

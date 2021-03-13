@@ -21,18 +21,19 @@
                         <Require-Bundle>
                             org.eclipse.emf.common;visibility:=reexport,
                             org.eclipse.emf.ecore;visibility:=reexport,
-                            fr.inria.atlanmod.neoemf.core;visibility:=reexport
+                            org.atlanmod.neoemf.core;visibility:=reexport
                         </Require-Bundle>
                     </instructions>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
     <dependencies>
         <dependency>
-            <groupId>fr.inria.atlanmod.neoemf</groupId>
+            <groupId>org.atlanmod.neoemf</groupId>
             <artifactId>neoemf-core</artifactId>
-            <version>2.0.0</version>
+            <version>2.0.1</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
