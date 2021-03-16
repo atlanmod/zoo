@@ -65,6 +65,17 @@
         </repository>
     </distributionManagement>
 
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-atlanmod</id>
+            <name>bintray</name>
+            <url>https://dl.bintray.com/atlanmod/unveiling/</url>
+        </repository>
+    </repositories>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>11</jdk.version>
@@ -100,40 +111,47 @@
                 <type>pom</type>
                 <version>${unveiling-emf.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.atlanmod.unveiling</groupId>
                 <artifactId>org.eclipse.emf.ecore</artifactId>
                 <type>pom</type>
                 <version>${unveiling-emf.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.atlanmod.unveiling</groupId>
                 <artifactId>org.eclipse.emf.ecore.xcore</artifactId>
                 <type>pom</type>
                 <version>${unveiling-emf.version}</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
+
         <dependency>
             <groupId>org.atlanmod.unveiling</groupId>
             <artifactId>org.eclipse.emf.common</artifactId>
             <type>pom</type>
-            <optional>true</optional>
+            <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>org.atlanmod.unveiling</groupId>
             <artifactId>org.eclipse.emf.ecore</artifactId>
             <type>pom</type>
-            <scope>provided</scope>
+            <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>org.atlanmod.unveiling</groupId>
             <artifactId>org.eclipse.emf.ecore.xcore</artifactId>
             <type>pom</type>
             <scope>compile</scope>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -172,7 +190,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.2.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.eclipse.xtext</groupId>
@@ -187,7 +205,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>3.2.0</version>
+                    <version>3.2.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -205,7 +223,7 @@
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>4.2.1</version>
+                    <version>5.1.1</version>
                     <extensions>true</extensions>
                     <configuration>
                         <exportScr>true</exportScr>
@@ -343,6 +361,7 @@
                     </filesets>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -361,6 +380,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.eclipse.xtext</groupId>
                 <artifactId>xtext-maven-plugin</artifactId>
@@ -393,12 +413,11 @@
                         <root>${models.location}</root>
                     </sourceRoots>
                 </configuration>
-
                 <dependencies>
                     <dependency>
-                        <groupId>org.eclipse.emf</groupId>
+                        <groupId>org.atlanmod.unveiling</groupId>
                         <artifactId>org.eclipse.emf.codegen.ecore.xtext</artifactId>
-                        <version>1.5.0</version>
+                        <version>${unveiling-emf.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.atlanmod.unveiling</groupId>
@@ -406,8 +425,34 @@
                         <version>${unveiling-emf.version}</version>
                         <type>pom</type>
                     </dependency>
+                    <dependency>
+                        <groupId>org.atlanmod.unveiling</groupId>
+                        <artifactId>org.eclipse.emf.ecore</artifactId>
+                        <version>${unveiling-emf.version}</version>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.atlanmod.unveiling</groupId>
+                        <artifactId>org.eclipse.emf.common</artifactId>
+                        <version>${unveiling-emf.version}</version>
+                        <type>pom</type>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>org.eclipse.xtext</groupId>
+                        <artifactId>xtext-maven-plugin</artifactId>
+                        <version>${xtext-version}</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>org.eclipse.emf</groupId>
+                                <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+
                 </dependencies>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -476,10 +521,10 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <version>3.5.0</version>
+                                    <version>3.6.0</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <version>1.8</version>
+                                    <version>11</version>
                                 </requireJavaVersion>
                             </rules>
                         </configuration>
@@ -529,16 +574,6 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>bintray-atlanmod</id>
-            <name>bintray</name>
-            <url>https://dl.bintray.com/atlanmod/unveiling</url>
-        </repository>
-    </repositories>
 
     <profiles>
         <!-- A profile to deploy artifacts on OSS Sonartype -->

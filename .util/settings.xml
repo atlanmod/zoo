@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/SETTINGS/1.0.0" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
 
     <servers>
         <server>
@@ -8,46 +9,46 @@
             <password>${env.CI_DEPLOY_PASSWORD}</password>
         </server>
     </servers>
-    
+
     <profiles>
-    <profile>
-        <id>default</id>
-        <repositories>
-            <repository>
-                <id>central</id>
-                <name>Maven Central</name>
-                <releases>
-                  <enabled>true</enabled>
-                  <updatePolicy>daily</updatePolicy>
-                  <checksumPolicy>warn</checksumPolicy>
-                </releases>
-                <url>https://repo1.maven.org/maven2/</url>
-                <layout>default</layout>
-            </repository>
-            <repository>
-                <id>jenkins-ci</id>
-                <name>Jenkins CI Releases</name>
-                <releases>
-                  <enabled>true</enabled>
-                  <updatePolicy>daily</updatePolicy>
-                  <checksumPolicy>warn</checksumPolicy>
-                </releases>
-                <url>https://repo.jenkins-ci.org/public</url>
-                <layout>default</layout>
-            </repository>
-                    <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>bintray-atlanmod</id>
-            <name>Atlanmod Bintray Repository</name>
-            <url>https://dl.bintray.com/atlanmod/unveiling/</url>
-            </repository>
-        </repositories>
-    </profile>
-</profiles>
-<activeProfiles>
-  <activeProfile>default</activeProfile>
-</activeProfiles>
+        <profile>
+            <id>default</id>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <name>Maven Central</name>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>daily</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </releases>
+                    <url>https://repo1.maven.org/maven2/</url>
+                    <layout>default</layout>
+                </repository>
+                <repository>
+                    <id>jenkins-ci</id>
+                    <name>Jenkins CI Releases</name>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>daily</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </releases>
+                    <url>https://repo.jenkins-ci.org/public</url>
+                    <layout>default</layout>
+                </repository>
+                <repository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>bintray-atlanmod</id>
+                    <name>Atlanmod Bintray Repository</name>
+                    <url>https://dl.bintray.com/atlanmod/unveiling/</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>default</activeProfile>
+    </activeProfiles>
 
 </settings>
