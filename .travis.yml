@@ -7,8 +7,8 @@ jdk:
   - openjdk11
 cache:
   directories:
-  - "~/.m2/repository"
-  - "~/.sonar/cache"
+    - $HOME/.m2
+    - $HOME/.sonar/cache
 install:
 - mvn -B -V -q -DskipTests install
 #script:
