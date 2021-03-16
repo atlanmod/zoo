@@ -10,7 +10,10 @@ cache:
     - $HOME/.m2
     - $HOME/.sonar/cache
 install:
-- mvn -B -V -q -DskipTests install
+  - curl -o $HOME/.m2/settings.xml https://github.com/atlanmod/zoo/raw/master/.util/settings.xml
+  - mvn dependency:go-offline
+script:
+  - mvn -B -V -q -DskipTests install
 #script:
 #- mvn -B jacoco:prepare-agent test jacoco:report jacoco:report-aggregate sonar:sonar
 after_success:
