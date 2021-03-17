@@ -10,7 +10,7 @@ cache:
     - $HOME/.m2
     - $HOME/.sonar/cache
 install:
-  - curl -o $HOME/.m2/settings.xml https://github.com/atlanmod/zoo/raw/master/.util/settings.xml
+  - curl -o $HOME/.m2/settings.xml https://raw.githubusercontent.com/atlanmod/zoo/master/.util/settings.xml
   - mvn dependency:go-offline
 script:
   - mvn -B -V -q -DskipTests install
