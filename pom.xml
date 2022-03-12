@@ -70,11 +70,11 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.fork>true</maven.compiler.fork>
-        <emf.version>2.21.0</emf.version>
-        <xcore.version>1.4.0</xcore.version>
+        <emf.version>[2.15.0,)</emf.version>
+        <xcore.version>[1.15.0,)</xcore.version>
         <generated-sources.location>${project.basedir}/src/main/java-gen/</generated-sources.location>
         <models.location>${project.basedir}/src/main/model/</models.location>
-        <xtext-version>2.23.0</xtext-version>
+        <xtext-version>[2.26.0,3.0.0)</xtext-version>
         <ecore-xtext-version>1.5.0</ecore-xtext-version>
         <ecore-xcore-version>1.15.0</ecore-xcore-version>
         <ecore-xcore-lib-version>1.5.0</ecore-xcore-lib-version>
@@ -82,17 +82,16 @@
 
     <modules>
         <module>emf.graph</module>
-        <module>emf.java</module>
         <module>emf.trace</module>
         <module>emf.types</module>
         <module>emf.widespread</module>
         <module>emf.cobol</module>
         <module>emf.iotmodel</module>
         <module>emf.smm</module>
-        <module>neoemf.java</module>
         <module>emf.gremilin</module>
         <module>emf.socialnetwork</module>
         <module>emf.kdm</module>
+        <module>modisco</module>
     </modules>
 
     <dependencyManagement>
@@ -100,7 +99,7 @@
             <dependency>
                 <groupId>org.eclipse.emf</groupId>
                 <artifactId>org.eclipse.emf.common</artifactId>
-                <version>2.16.0</version>
+                <version>${emf.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.emf</groupId>
@@ -110,7 +109,7 @@
             <dependency>
                 <groupId>org.eclipse.emf</groupId>
                 <artifactId>org.eclipse.emf.ecore.xcore.lib</artifactId>
-                <version>1.4.0</version>
+                <version>${ecore-xcore-lib-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -169,22 +168,22 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.2.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.eclipse.xtext</groupId>
                     <artifactId>xtext-maven-plugin</artifactId>
-                    <version>${xtext-version}</version>
+                    <version>2.26.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.0.0-M2</version>
+                    <version>3.0.0-M3</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>3.2.0</version>
+                    <version>3.2.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -202,13 +201,13 @@
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>4.2.1</version>
+                    <version>5.1.2</version>
                     <extensions>true</extensions>
                     <configuration>
                         <exportScr>true</exportScr>
                         <instructions>
                             <Bundle-Version>
-                                1.0.4.${maven.build.timestamp}
+                                1.0.5.${maven.build.timestamp}
                             </Bundle-Version>
                             <Bundle-ClassPath>.,{maven-dependencies}</Bundle-ClassPath>
                             <Import-Package/>
@@ -245,14 +244,14 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.6</version>
+                    <version>0.8.7</version>
                 </plugin>
 
                 <plugin>
                     <!-- `deploy-javadoc` profile comes in addition to this configuration -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.2.0</version>
+                    <version>3.3.1</version>
                     <configuration>
                         <additionalOptions>-Xdoclint:none</additionalOptions>
                         <failOnError>false</failOnError>
@@ -424,7 +423,7 @@
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
                         <artifactId>org.eclipse.emf.common</artifactId>
-                        <version>2.16.0</version>
+                        <version>${emf.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
@@ -434,7 +433,7 @@
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
                         <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
-                        <version>2.16.0</version>
+                        <version>${emf.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
@@ -507,7 +506,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
                 <configuration>
                     <tagNameFormat>v@{project.version}</tagNameFormat>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
@@ -553,7 +551,7 @@
                             ${project.artifactId}.*
                         </Export-Package>
                         <Bundle-Version>
-                            1.0.1.${maven.build.timestamp}
+                            1.0.5.${maven.build.timestamp}
                         </Bundle-Version>
                         <Embed-Dependency>*;scope=runtime</Embed-Dependency>
                         <Embed-Transitive>false</Embed-Transitive>
