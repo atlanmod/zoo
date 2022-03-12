@@ -8,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>neoemf.java</artifactId>
-    <name>NeoEMF Java Model</name>
+    <name>Modisco NeoEMF Java Model</name>
     <packaging>bundle</packaging>
 
     <build>
@@ -28,6 +28,7 @@
             </plugin>
         </plugins>
     </build>
+
     <dependencies>
         <dependency>
             <groupId>org.atlanmod.neoemf</groupId>

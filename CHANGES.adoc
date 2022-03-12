@@ -4,3 +4,4 @@
 
 - Add Modisco-Java model for CDO.
 - Update xtext to version 2.26.0
+- Update to JDK 11
