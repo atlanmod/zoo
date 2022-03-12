@@ -1,0 +1,6 @@
+= Changes
+
+== Version 1.0.5
+
+- Add Modisco-Java model for CDO.
+- Update xtext to version 2.26.0
