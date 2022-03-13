@@ -1,0 +1,111 @@
+:experimental: true
+= Make a release to `X.Y.Z`
+
+== Upgrade to a RELEASE version
+
+=== In the main project
+
+* Before change the version, ensure that you have installed the current version in your local repository : otherwise, you will have some issues in releasing Eclipse and Benchmarks.
+
+----
+mvn clean install -DskipTests
+----
+
+* 
+
+Define the new version.
+
+----
+mvn versions:set -DnewVersion='X.Y.Z'
+----
+
+* (Un)Comment the timestamp in `maven-bundle-plugin` at `Bundle-Version`, configured with `.${maven.build.timestamp}`.
+
+* Install the new version in your local repository.
+
+=== In Eclipse project
+
+* 
+
+As previously, ensure that you have installed the current version in your local repository.
+
+----
+mvn clean install -DskipTests
+----
+
+* Update the `parent.version` in the root `pom.xml` according to the new version, as previously set, but not others.
+
+* Define the new version.
+
+*NOTE:* If it's a SNAPSHOT, add `.qualifier` instead of `-SNAPSHOT`.
+
+*NOTE2:* It will remove the `parent.version` in the root `pom.xml` because it's the same of the parent. Re-set it to the current version.
+
+----
+mvn tycho-versions:set-version -DnewVersion='X.Y.Z'
+----
+
+* Update `feature.xml` in features and `category.xml` in the update-site: remove `.qualifier` for NeoEMF dependencies.
+
+* Install the new version in your local repository.
+
+=== In benchmarks project
+
+The procedure is the same as in the main project.
+
+== Publish the release in Github
+
+* Commit *(without push)* the modifications
+* Tag the commit with name `vX.Y.Z`
+[source,shell]
+----
+git tag -a v1.0.5 -m "Version 1.0.5"
+----
+
+== Deploy a release
+
+*NOTE:* Only the main project have to be deployed in Maven central !
+
+OSS-RH has some http://central.sonatype.org/pages/ossrh-guide.html[requirements] to accept the release.
+One of them is the signature of the artifacts: A full description is available http://central.sonatype.org/pages/working-with-pgp-signatures.html[here], describing how to create his key.
+
+Maven must be configured to handle signature and deployment.
+The following `settings.xml` file must be filled and placed at the root of your `.m2` directory:
+
+[source,xml]
+----
+<settings>
+    <servers>
+        <server>
+            <id>ossrh</id>
+            <username>{OSS-USERNAME}</username>
+            <password>{OSS-PASSWORD}</password>
+        </server>
+    </servers>
+</settings>
+----
+
+Once is done, you can deploy your artifacts on Maven Central with the following:
+
+----
+mvn clean deploy -DskipTests -P deploy-artifacts
+----
+
+Artifacts are now staged and wait for validation and deployment on the https://oss.sonatype.org[Nexus Repo Manager] (Note that staged artifacts, are not definitive, they can be removed/cancelled): A full description of different steps is available http://central.sonatype.org/pages/releasing-the-deployment.html[here].
+
+https://oss.sonatype.org/
+
+go to staging repositories:
+https://oss.sonatype.org/#stagingRepositories
+
+https://help.sonatype.com/repomanager2/staging-releases/managing-staging-repositories
+
+* Click on btn:[Close]  (all artifacts were deployed)
+* Click on btn:[Release]
+
+== Upgrade to a SNAPSHOT version
+
+Once you have deployed yor artifacts, to avoid overwritten your release, you must upgrade your project in a SNAPSHOT state.
+Repeat the several steps described in the "upgrade-to-a-release-version" section, Upgrade to a RELEASE version>> section by adding `-SNAPSHOT` or `.qualifier`.
+
+Once is done, you can now commit and push the changes in GitHub.
