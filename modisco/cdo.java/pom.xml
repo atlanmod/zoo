@@ -32,6 +32,7 @@
                         <Bundle-SymbolicName>org.eclipse.gmt.modisco.java</Bundle-SymbolicName>
                         <Export-Package>
                             org.eclipse.gmt.modisco.java.*
+                            org.eclipse.gmt.modisco.java.cdo.*
                         </Export-Package>
                     </instructions>
                 </configuration>
