@@ -49,7 +49,7 @@ For instance, the dependency for Modisco Java's abstract syntax is:
 <dependency>
     <artifactId>emf-java</artifactId>
     <groupId>org.atlanmod.zoo</groupId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
 </dependency>
 ----
 
